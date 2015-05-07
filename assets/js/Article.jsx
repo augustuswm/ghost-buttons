@@ -1,10 +1,31 @@
-var React = require('react');
+var React = require('react'),
+    ArticleTitle = require('./ArticleTitle.jsx'),
+    ArticleMeta = require('./ArticleMeta.jsx'),
+    ArticleBody = require('./ArticleBody.jsx');
 
 var Article = React.createClass({
+  getInitialState: function() {
+    return {
+      title: "Here is a big title",
+      meta: {
+        date: "01-01-2001",
+        tags: [
+          {
+            slug: "coop-gaming",
+            description: "All about cooperative gaming",
+            name: "Coop"
+          }
+        ]
+      },
+      body: "This is some body copy."
+    };
+  },
   render: function() {
     return (
       <div>
-        Hello World
+        <ArticleTitle title={this.state.title} />
+        <ArticleMeta {...this.state.meta} />
+        <ArticleBody body={this.state.body} />
       </div>
     );
   }

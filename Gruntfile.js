@@ -12,7 +12,9 @@ module.exports = function(grunt) {
       dev: {
         options: {
           debug: true,
-          transform: ['reactify']
+          transform: [
+            ["reactify", {"es6": true}]
+          ]
         },
         files: {
           'assets/build/build.js': 'assets/js/*.jsx'
@@ -21,7 +23,9 @@ module.exports = function(grunt) {
       build: {
         options: {
           debug: false,
-          transform: ['reactify']
+          transform: [
+            ["reactify", {"es6": true}]
+          ]
         },
         files: {
           'assets/build/build.js': 'assets/js/*.jsx'
@@ -29,10 +33,27 @@ module.exports = function(grunt) {
       }
     },
 
+    cssmin: {
+      target: {
+        files: [{
+          expand: true,
+          cwd: 'assets/css',
+          src: ['*.css', '!*.min.css'],
+          dest: 'assets/build',
+          ext: '.min.css'
+        }]
+      }
+    },
+
     watch: {
       browserify: {
-        files: ['assets/js/*.js', 'assets/js/*.jsx'],
-        tasks: ['browserify:dev']
+        files: [
+          'assets/js/*.js',
+          'assets/js/*.jsx',
+          'assets/css/**/*.css',
+          'assets/css/*.css'
+        ],
+        tasks: ['cssmin', 'browserify:dev']
       },
       options: {
         nospawn: true
@@ -41,9 +62,10 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-env');
 
   grunt.registerTask('default', ['watch']);
-  grunt.registerTask('build', ['env:build', 'browserify:build']);
+  grunt.registerTask('build', ['env:build', 'cssmin', 'browserify:build']);
 };

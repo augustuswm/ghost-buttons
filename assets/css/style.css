@@ -1,0 +1,12 @@
+.taglist-list {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  list-style: none;
+}
+
+.taglist-tag {
+  float: left;
+  margin: 0;
+  padding: 2px;
+}

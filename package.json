@@ -2,7 +2,7 @@
   "name": "ghost-buttons",
   "version": "0.0.0",
   "description": "Buttons theme for Ghost Blog",
-  "main": "index.js",
+  "main": "build.js",
   "dependencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-watch": "~0.6.1"
@@ -14,7 +14,8 @@
     "grunt-browserify": "^3.8.0",
     "grunt-env": "^0.4.4",
     "react": "^0.13.2",
-    "react-router": "^0.13.3"
+    "react-router": "^0.13.3",
+    "grunt-contrib-cssmin": "^0.12.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
