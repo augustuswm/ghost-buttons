@@ -27,11 +27,11 @@ a:focus {
   text-align: center;
   font-size: 2em;
   line-height: 40px;
-  transition: color 1s;
+  transition: background-color 1s, color 1s;
 }
 
 .article-button > a:hover {
-  color: #e3e3e3;
+  background-color: rgba(223, 223, 223, 1);
 }
 
 .article-button-border {
