@@ -6,7 +6,7 @@ var React = require('react'),
 var Article = React.createClass({
   getInitialState: function() {
     return {
-      title: "Here is a big title",
+      title: "",
       meta: {
         date: "01-01-2001",
         tags: [
@@ -21,8 +21,10 @@ var Article = React.createClass({
     };
   },
   render: function() {
+    var classes = "article-container" + ((this.state.title) ? " article-active" : "");
+
     return (
-      <div>
+      <div className={classes}>
         <ArticleTitle title={this.state.title} />
         <ArticleMeta {...this.state.meta} />
         <ArticleBody body={this.state.body} />
