@@ -120,13 +120,17 @@ var React = require('react'),
 
 var ArticleButton = React.createClass({displayName: "ArticleButton",
   render: function() {
-    var firstLetter = this.props.title.substring(0, 1);
+    var firstLetter = this.props.title.substring(0, 1),
+        skittleColors = ["red", "orange", "yellow", "green", "purple"],
+        skittleSeed = Math.floor(Math.min(Math.random() * 5, 5)),
+        classes = "article-button skittles-" + skittleColors[skittleSeed];
 
     return (
-      React.createElement("div", {className: "article-button"}, 
+      React.createElement("div", {className: classes}, 
         React.createElement(Link, {to: "Article", params: { slug: this.props.slug}}, 
-          firstLetter, 
-          React.createElement("div", {className: "article-button-border"})
+          React.createElement("div", {className: "article-button-background"}), 
+          React.createElement("div", {className: "article-button-border"}), 
+          React.createElement("div", {className: "article-button-text"}, firstLetter)
         )
       )
     );
@@ -214,7 +218,10 @@ var Magazine = React.createClass({displayName: "Magazine",
     return {
       articles: [
         { id: 1, slug: "post-one", title: "First Article"},
-        { id: 2, slug: "post-two", title: "Second Article"}
+        { id: 2, slug: "post-two", title: "Second Article"},
+        { id: 3, slug: "post-three", title: "Third Article"},
+        { id: 4, slug: "post-four", title: "Fourth Article"},
+        { id: 5, slug: "post-five", title: "Fifth Article"}
       ] 
     };
   },

@@ -33,6 +33,20 @@ module.exports = function(grunt) {
       }
     },
 
+    less: {
+      dev: {
+        options: {
+          paths: 'assets/css/less',
+          plugins: [
+            new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]}),
+          ]
+        },
+        files: {
+          'assets/css/style.css' : 'assets/css/less/style.less'
+        }
+      }
+    },
+
     cssmin: {
       target: {
         files: [{
@@ -51,9 +65,10 @@ module.exports = function(grunt) {
           'assets/js/*.js',
           'assets/js/*.jsx',
           'assets/css/**/*.css',
-          'assets/css/*.css'
+          'assets/css/*.css',
+          'assets/css/less/*.less'
         ],
-        tasks: ['cssmin', 'browserify:dev']
+        tasks: ['less', 'cssmin', 'browserify:dev']
       },
       options: {
         nospawn: true
@@ -63,6 +78,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-env');
 

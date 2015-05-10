@@ -1,0 +1,108 @@
+@import "for";
+
+a {
+  color: #448bc8;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    color: #23527c;
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
+}
+
+.article-button {
+  float: left;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  border-radius: 25px;
+  background: rgba(240, 240, 240, 1);
+
+  &:hover {
+    .article-button-border {
+      top: 3px;
+      left: 3px;
+      width: 44px;
+      height: 44px;
+      border: 2px solid rgba(240, 240, 240, 1);
+    }
+
+    .article-button-background {
+      opacity: 0;
+    }
+  }
+
+  & > a {
+    position: relative;
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    transition: color 1s;
+  }
+
+  .for(@skittles); .-each(@name) {
+    &.@{name} > a > .article-button-background {
+      background: @@name;
+      background: radial-gradient(ellipse at center, lighten(@@name, 5%) 0%, @@name 50%, darken(@@name, 15%) 100%); /* W3C */
+    }
+
+    &.@{name}:hover > a > .article-button-text {
+      color: @@name;
+    }
+  }
+}
+
+.article-button-border {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 0px;
+  height: 0px;
+  border: 0px solid rgba(240, 240, 240, 0);
+  border-radius: 25px;
+  transition: top 1s, left 1s, width 1s, height 1s, border 0.5s;
+}
+
+.article-button-background, .article-button-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  border-radius: 25px;
+  color: #fff;
+  text-align: center;
+  font-size: 2em;
+  line-height: 40px;
+  opacity: 1;
+  transition: opacity 1s, color 1s;
+}
+
+.article-container {
+  display: none;
+}
+
+.article-active {
+  display: block;
+}
+
+.taglist-list {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  list-style: none;
+}
+
+.taglist-tag {
+  float: left;
+  margin: 0;
+  padding: 2px;
+}
