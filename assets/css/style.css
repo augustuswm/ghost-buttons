@@ -25,9 +25,12 @@ a:focus {
   left: 3px;
   width: 44px;
   height: 44px;
-  border: 2px solid #f0f0f0;
+  border: 3px solid #f0f0f0;
 }
 .article-button:hover .article-button-background {
+  opacity: 0;
+}
+.article-button.active .article-button-background {
   opacity: 0;
 }
 .article-button > a {
@@ -43,7 +46,8 @@ a:focus {
   background: radial-gradient(ellipse at center, #f15e2b 0%, #ef4c13 50%, #aa350c 100%);
   /* W3C */
 }
-.article-button.skittles-orange:hover > a > .article-button-text {
+.article-button.skittles-orange:hover > a > .article-button-text,
+.article-button.skittles-orange.active > a > .article-button-text {
   color: #ef4c13;
 }
 .article-button.skittles-yellow > a > .article-button-background {
@@ -51,7 +55,8 @@ a:focus {
   background: radial-gradient(ellipse at center, #ffcf1f 0%, #ffca05 50%, #b79100 100%);
   /* W3C */
 }
-.article-button.skittles-yellow:hover > a > .article-button-text {
+.article-button.skittles-yellow:hover > a > .article-button-text,
+.article-button.skittles-yellow.active > a > .article-button-text {
   color: #ffca05;
 }
 .article-button.skittles-green > a > .article-button-background {
@@ -59,7 +64,8 @@ a:focus {
   background: radial-gradient(ellipse at center, #0ead0c 0%, #0c950a 50%, #064d05 100%);
   /* W3C */
 }
-.article-button.skittles-green:hover > a > .article-button-text {
+.article-button.skittles-green:hover > a > .article-button-text,
+.article-button.skittles-green.active > a > .article-button-text {
   color: #0c950a;
 }
 .article-button.skittles-purple > a > .article-button-background {
@@ -67,7 +73,8 @@ a:focus {
   background: radial-gradient(ellipse at center, #4b0747 0%, #340531 50%, #000000 100%);
   /* W3C */
 }
-.article-button.skittles-purple:hover > a > .article-button-text {
+.article-button.skittles-purple:hover > a > .article-button-text,
+.article-button.skittles-purple.active > a > .article-button-text {
   color: #340531;
 }
 .article-button.skittles-red > a > .article-button-background {
@@ -75,7 +82,8 @@ a:focus {
   background: radial-gradient(ellipse at center, #b40330 0%, #9b0329 50%, #500215 100%);
   /* W3C */
 }
-.article-button.skittles-red:hover > a > .article-button-text {
+.article-button.skittles-red:hover > a > .article-button-text,
+.article-button.skittles-red.active > a > .article-button-text {
   color: #9b0329;
 }
 .article-button-border {

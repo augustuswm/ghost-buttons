@@ -15,9 +15,10 @@ var App = React.createClass({
 
 var routes = (
   <Route handle={App}>
-    <DefaultRoute handler={Home} />
-    <Route name="Magazine" path="magazine" handler={Magazine}>
-      <Route name="Article" path="/article/:slug" handler={Article} />
+    <Route name="Home" path="/" handler={Home}>
+      <Route name="Magazine" path="magazine" handler={Magazine}>
+        <Route name="Article" path="/article/:slug" handler={Article} />
+      </Route>
     </Route>
   </Route>
 );

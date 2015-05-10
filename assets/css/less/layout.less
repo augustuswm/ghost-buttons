@@ -30,9 +30,15 @@ a {
       left: 3px;
       width: 44px;
       height: 44px;
-      border: 2px solid rgba(240, 240, 240, 1);
+      border: 3px solid rgba(240, 240, 240, 1);
     }
 
+    .article-button-background {
+      opacity: 0;
+    }
+  }
+
+  &.active {
     .article-button-background {
       opacity: 0;
     }
@@ -53,7 +59,7 @@ a {
       background: radial-gradient(ellipse at center, lighten(@@name, 5%) 0%, @@name 50%, darken(@@name, 15%) 100%); /* W3C */
     }
 
-    &.@{name}:hover > a > .article-button-text {
+    &.@{name}:hover > a > .article-button-text, &.@{name}.active > a > .article-button-text {
       color: @@name;
     }
   }

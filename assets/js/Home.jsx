@@ -24,7 +24,7 @@ var Home = React.createClass({
     return (
       <div>
         <h1>This is the introduction text</h1>
-        <Magazine />
+        <Magazine params={this.props.params} />
       </div>
     );
   }
