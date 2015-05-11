@@ -21,7 +21,7 @@ var Magazine = React.createClass({
   },
   render: function() {
     return (
-      <div>
+      <div className="magazine">
         <Article {...this.props.params} />
         <ArticleButtonList articles={this.state.get('articles')} activeSlug={this.props.params.slug} />
       </div>

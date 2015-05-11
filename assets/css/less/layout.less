@@ -1,4 +1,5 @@
 @import "for";
+@import "functions";
 
 a {
   color: #448bc8;
@@ -14,6 +15,62 @@ a {
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px;
   }
+}
+
+html, body, #react-entry, .container, .container-main, .container-side {
+  height: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  background:
+    linear-gradient(0deg,
+      extract(@NES-colors, random(0, 47)) 20%,
+      extract(@NES-colors, random(0, 47)) 40%,
+      extract(@NES-colors, random(0, 47)) 60%,
+      extract(@NES-colors, random(0, 47)) 80%,
+      extract(@NES-colors, random(0, 47)) 100%
+    ) 0px 0px,
+    linear-gradient(0deg,
+      extract(@NES-colors, random(0, 47)) 20%,
+      extract(@NES-colors, random(0, 47)) 40%,
+      extract(@NES-colors, random(0, 47)) 60%,
+      extract(@NES-colors, random(0, 47)) 80%,
+      extract(@NES-colors, random(0, 47)) 100%
+    ) 10px 0px;
+  background-size: 50px 10px;
+}
+
+.container {
+  width: @container-width;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.container-main {
+  float: left;
+  width: @main-width;
+  margin: 0 @element-margin;
+  padding: 0 @element-padding;
+  border: 1px solid @light-gray;
+  border-width: 0 1px;
+  background: @lightest-gray;
+}
+
+.container-side {
+  float: left;
+  width: @side-width;
+  margin: 0 @element-margin;
+  padding: 0 @element-padding;
+}
+
+.magazine {
+}
+
+.article-button-list {
+  overflow: auto;
 }
 
 .article-button {

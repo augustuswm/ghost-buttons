@@ -39,6 +39,7 @@ module.exports = function(grunt) {
           paths: 'assets/css/less',
           plugins: [
             new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]}),
+            new (require('less-plugin-functions'))()
           ]
         },
         files: {

@@ -12,6 +12,44 @@ a:focus {
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
+html,
+body,
+#react-entry,
+.container,
+.container-main,
+.container-side {
+  height: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+body {
+  background: linear-gradient(0deg, #f878f8 20%, #f8b8f8 40%, #6888fc 60%, #b8f818 80%, #503000 100%) 0px 0px, linear-gradient(0deg, #b8f818 20%, #a81000 40%, #005800 60%, #6844fc 80%, #f8a4c0 100%) 10px 0px;
+  background-size: 50px 10px;
+}
+.container {
+  width: 80%;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+.container-main {
+  float: left;
+  width: 64%;
+  margin: 0 3%;
+  padding: 0 3%;
+  border: 1px solid #b3b3b3;
+  border-width: 0 1px;
+  background: #f2f2f2;
+}
+.container-side {
+  float: left;
+  width: 24%;
+  margin: 0 3%;
+  padding: 0 3%;
+}
+.article-button-list {
+  overflow: auto;
+}
 .article-button {
   float: left;
   width: 50px;

@@ -10,7 +10,7 @@ var ArticleButtonList = React.createClass({
     }.bind(this));
 
     return (
-      <div>
+      <div className="article-button-list">
         {articleRows}
       </div>
     );

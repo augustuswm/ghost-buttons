@@ -8,13 +8,19 @@ var React = require('react'),
 var App = React.createClass({
   render: function() {
     return (
-      <RouteHandler />
+      <div className="container">
+        <div className="container-main">
+          <RouteHandler />
+        </div>
+        <div className="container-side">
+        </div>
+      </div>
     );
   }
 });
 
 var routes = (
-  <Route handle={App}>
+  <Route name="Entry" path="/" handler={App}>
     <Route name="Home" path="/" handler={Home}>
       <Route name="Magazine" path="magazine" handler={Magazine}>
         <Route name="Article" path="/article/:slug" handler={Article} />
@@ -24,5 +30,5 @@ var routes = (
 );
 
 Router.run(routes, function(Handler) {
-  React.render(<Handler/>, document.getElementById("react-entry"));
+  React.render(<Handler />, document.getElementById("react-entry"));
 });

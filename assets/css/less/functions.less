@@ -1,0 +1,6 @@
+.function {
+  .random(@min, @max) {
+    @random-color: e(`Math.floor(Math.random()*(@{max}-@{min})) + @{min}`);
+    return: @random-color;
+  }
+}
