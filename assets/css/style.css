@@ -23,8 +23,9 @@ body,
   box-sizing: border-box;
 }
 body {
-  background: linear-gradient(0deg, #f878f8 20%, #f8b8f8 40%, #6888fc 60%, #b8f818 80%, #503000 100%) 0px 0px, linear-gradient(0deg, #b8f818 20%, #a81000 40%, #005800 60%, #6844fc 80%, #f8a4c0 100%) 10px 0px;
+  background: linear-gradient(90deg, #f0d0b0 20%, #004058 20%, #004058 40%, #f8b8f8 40%, #f8b8f8 60%, #881400 60%, #881400 80%, #d800cc 80%, #d800cc 100%) 0px 0px, linear-gradient(90deg, #006800 20%, #d8b8f8 20%, #d8b8f8 40%, #f83800 40%, #f83800 60%, #503000 60%, #503000 80%, #0078f8 80%, #0078f8 100%) 0px 10px, linear-gradient(90deg, #007800 20%, #f0d0b0 20%, #f0d0b0 40%, #0000fc 40%, #0000fc 60%, #9878f8 60%, #9878f8 80%, #3cbcfc 80%, #3cbcfc 100%) 0px 20px, linear-gradient(90deg, #007800 20%, #008888 20%, #008888 40%, #f8b800 40%, #f8b800 60%, #0058f8 60%, #0058f8 80%, #a80020 80%, #a80020 100%) 0px 30px, linear-gradient(90deg, #a80020 20%, #006800 20%, #006800 40%, #a81000 40%, #a81000 60%, #f83800 60%, #f83800 80%, #0058f8 80%, #0058f8 100%) 0px 40px;
   background-size: 50px 10px;
+  background-repeat: no-repeat;
 }
 .container {
   width: 80%;

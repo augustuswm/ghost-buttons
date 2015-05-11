@@ -24,22 +24,63 @@ html, body, #react-entry, .container, .container-main, .container-side {
 }
 
 body {
+  @bgColors: random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46);
+  
   background:
-    linear-gradient(0deg,
-      extract(@NES-colors, random(0, 47)) 20%,
-      extract(@NES-colors, random(0, 47)) 40%,
-      extract(@NES-colors, random(0, 47)) 60%,
-      extract(@NES-colors, random(0, 47)) 80%,
-      extract(@NES-colors, random(0, 47)) 100%
+    linear-gradient(90deg,
+      extract(@NES-colors, extract(@bgColors, 1)) 20%,
+      extract(@NES-colors, extract(@bgColors, 2)) 20%,
+      extract(@NES-colors, extract(@bgColors, 2)) 40%,
+      extract(@NES-colors, extract(@bgColors, 3)) 40%,
+      extract(@NES-colors, extract(@bgColors, 3)) 60%,
+      extract(@NES-colors, extract(@bgColors, 4)) 60%,
+      extract(@NES-colors, extract(@bgColors, 4)) 80%,
+      extract(@NES-colors, extract(@bgColors, 5)) 80%,
+      extract(@NES-colors, extract(@bgColors, 5)) 100%
     ) 0px 0px,
-    linear-gradient(0deg,
-      extract(@NES-colors, random(0, 47)) 20%,
-      extract(@NES-colors, random(0, 47)) 40%,
-      extract(@NES-colors, random(0, 47)) 60%,
-      extract(@NES-colors, random(0, 47)) 80%,
-      extract(@NES-colors, random(0, 47)) 100%
-    ) 10px 0px;
+    linear-gradient(90deg,
+      extract(@NES-colors, extract(@bgColors, 6)) 20%,
+      extract(@NES-colors, extract(@bgColors, 7)) 20%,
+      extract(@NES-colors, extract(@bgColors, 7)) 40%,
+      extract(@NES-colors, extract(@bgColors, 8)) 40%,
+      extract(@NES-colors, extract(@bgColors, 8)) 60%,
+      extract(@NES-colors, extract(@bgColors, 9)) 60%,
+      extract(@NES-colors, extract(@bgColors, 9)) 80%,
+      extract(@NES-colors, extract(@bgColors, 10)) 80%,
+      extract(@NES-colors, extract(@bgColors, 10)) 100%
+    ) 0px 10px,linear-gradient(90deg,
+      extract(@NES-colors, extract(@bgColors, 11)) 20%,
+      extract(@NES-colors, extract(@bgColors, 12)) 20%,
+      extract(@NES-colors, extract(@bgColors, 12)) 40%,
+      extract(@NES-colors, extract(@bgColors, 13)) 40%,
+      extract(@NES-colors, extract(@bgColors, 13)) 60%,
+      extract(@NES-colors, extract(@bgColors, 14)) 60%,
+      extract(@NES-colors, extract(@bgColors, 14)) 80%,
+      extract(@NES-colors, extract(@bgColors, 15)) 80%,
+      extract(@NES-colors, extract(@bgColors, 15)) 100%
+    ) 0px 20px,linear-gradient(90deg,
+      extract(@NES-colors, extract(@bgColors, 16)) 20%,
+      extract(@NES-colors, extract(@bgColors, 17)) 20%,
+      extract(@NES-colors, extract(@bgColors, 17)) 40%,
+      extract(@NES-colors, extract(@bgColors, 18)) 40%,
+      extract(@NES-colors, extract(@bgColors, 18)) 60%,
+      extract(@NES-colors, extract(@bgColors, 19)) 60%,
+      extract(@NES-colors, extract(@bgColors, 19)) 80%,
+      extract(@NES-colors, extract(@bgColors, 20)) 80%,
+      extract(@NES-colors, extract(@bgColors, 20)) 100%
+    ) 0px 30px,linear-gradient(90deg,
+      extract(@NES-colors, extract(@bgColors, 21)) 20%,
+      extract(@NES-colors, extract(@bgColors, 22)) 20%,
+      extract(@NES-colors, extract(@bgColors, 22)) 40%,
+      extract(@NES-colors, extract(@bgColors, 23)) 40%,
+      extract(@NES-colors, extract(@bgColors, 23)) 60%,
+      extract(@NES-colors, extract(@bgColors, 24)) 60%,
+      extract(@NES-colors, extract(@bgColors, 24)) 80%,
+      extract(@NES-colors, extract(@bgColors, 25)) 80%,
+      extract(@NES-colors, extract(@bgColors, 25)) 100%
+    ) 0px 40px;
   background-size: 50px 10px;
+  background-repeat: no-repeat;
 }
 
 .container {
