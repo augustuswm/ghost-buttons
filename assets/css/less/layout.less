@@ -2,11 +2,11 @@
 @import "functions";
 
 a {
-  color: #448bc8;
+  color: @NES-red;
   text-decoration: none;
 
   &:hover, &:focus {
-    color: #23527c;
+    color: lighten(@NES-red, 7%);
     text-decoration: underline;
   }
 
@@ -21,66 +21,251 @@ html, body, #react-entry, .container, .container-main, .container-side {
   height: 100%;
   min-height: 100%;
   box-sizing: border-box;
+  font-family: "Hind", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
   @bgColors: random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46), random(1, 46);
-  
+
   background:
-    linear-gradient(90deg,
-      extract(@NES-colors, extract(@bgColors, 1)) 20%,
-      extract(@NES-colors, extract(@bgColors, 2)) 20%,
-      extract(@NES-colors, extract(@bgColors, 2)) 40%,
-      extract(@NES-colors, extract(@bgColors, 3)) 40%,
-      extract(@NES-colors, extract(@bgColors, 3)) 60%,
-      extract(@NES-colors, extract(@bgColors, 4)) 60%,
-      extract(@NES-colors, extract(@bgColors, 4)) 80%,
-      extract(@NES-colors, extract(@bgColors, 5)) 80%,
-      extract(@NES-colors, extract(@bgColors, 5)) 100%
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 1)) 10%,
+      transparent 10%
     ) 0px 0px,
-    linear-gradient(90deg,
-      extract(@NES-colors, extract(@bgColors, 6)) 20%,
-      extract(@NES-colors, extract(@bgColors, 7)) 20%,
-      extract(@NES-colors, extract(@bgColors, 7)) 40%,
-      extract(@NES-colors, extract(@bgColors, 8)) 40%,
-      extract(@NES-colors, extract(@bgColors, 8)) 60%,
-      extract(@NES-colors, extract(@bgColors, 9)) 60%,
-      extract(@NES-colors, extract(@bgColors, 9)) 80%,
-      extract(@NES-colors, extract(@bgColors, 10)) 80%,
-      extract(@NES-colors, extract(@bgColors, 10)) 100%
-    ) 0px 10px,linear-gradient(90deg,
-      extract(@NES-colors, extract(@bgColors, 11)) 20%,
-      extract(@NES-colors, extract(@bgColors, 12)) 20%,
-      extract(@NES-colors, extract(@bgColors, 12)) 40%,
-      extract(@NES-colors, extract(@bgColors, 13)) 40%,
-      extract(@NES-colors, extract(@bgColors, 13)) 60%,
-      extract(@NES-colors, extract(@bgColors, 14)) 60%,
-      extract(@NES-colors, extract(@bgColors, 14)) 80%,
-      extract(@NES-colors, extract(@bgColors, 15)) 80%,
-      extract(@NES-colors, extract(@bgColors, 15)) 100%
-    ) 0px 20px,linear-gradient(90deg,
-      extract(@NES-colors, extract(@bgColors, 16)) 20%,
-      extract(@NES-colors, extract(@bgColors, 17)) 20%,
-      extract(@NES-colors, extract(@bgColors, 17)) 40%,
-      extract(@NES-colors, extract(@bgColors, 18)) 40%,
-      extract(@NES-colors, extract(@bgColors, 18)) 60%,
-      extract(@NES-colors, extract(@bgColors, 19)) 60%,
-      extract(@NES-colors, extract(@bgColors, 19)) 80%,
-      extract(@NES-colors, extract(@bgColors, 20)) 80%,
-      extract(@NES-colors, extract(@bgColors, 20)) 100%
-    ) 0px 30px,linear-gradient(90deg,
-      extract(@NES-colors, extract(@bgColors, 21)) 20%,
-      extract(@NES-colors, extract(@bgColors, 22)) 20%,
-      extract(@NES-colors, extract(@bgColors, 22)) 40%,
-      extract(@NES-colors, extract(@bgColors, 23)) 40%,
-      extract(@NES-colors, extract(@bgColors, 23)) 60%,
-      extract(@NES-colors, extract(@bgColors, 24)) 60%,
-      extract(@NES-colors, extract(@bgColors, 24)) 80%,
-      extract(@NES-colors, extract(@bgColors, 25)) 80%,
-      extract(@NES-colors, extract(@bgColors, 25)) 100%
-    ) 0px 40px;
-  background-size: 50px 10px;
-  background-repeat: no-repeat;
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 1)) 90%
+    ) 10px -10px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 2)) 10%,
+      transparent 10%
+    ) 10px 0px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 2)) 90%
+    ) 20px -10px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 3)) 10%,
+      transparent 10%
+    ) 20px 0px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 3)) 90%
+    ) 30px -10px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 4)) 10%,
+      transparent 10%
+    ) 30px 0px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 4)) 90%
+    ) 40px -10px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 5)) 10%,
+      transparent 10%
+    ) 40px 0px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 5)) 90%
+    ) 50px -10px,
+
+
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 6)) 10%,
+      transparent 10%
+    ) 0px 10px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 6)) 90%
+    ) 10px 0px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 7)) 10%,
+      transparent 10%
+    ) 10px 10px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 7)) 90%
+    ) 20px 0px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 8)) 10%,
+      transparent 10%
+    ) 20px 10px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 8)) 90%
+    ) 30px 0px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 9)) 10%,
+      transparent 10%
+    ) 30px 10px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 9)) 90%
+    ) 40px 0px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 10)) 10%,
+      transparent 10%
+    ) 40px 10px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 10)) 90%
+    ) 50px 0px,
+
+
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 11)) 10%,
+      transparent 10%
+    ) 0px 20px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 11)) 90%
+    ) 10px 10px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 12)) 10%,
+      transparent 10%
+    ) 10px 20px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 12)) 90%
+    ) 20px 10px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 13)) 10%,
+      transparent 10%
+    ) 20px 20px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 13)) 90%
+    ) 30px 10px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 14)) 10%,
+      transparent 10%
+    ) 30px 20px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 14)) 90%
+    ) 40px 10px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 15)) 10%,
+      transparent 10%
+    ) 40px 20px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 15)) 90%
+    ) 50px 10px,
+
+
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 16)) 10%,
+      transparent 10%
+    ) 0px 30px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 16)) 90%
+    ) 10px 20px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 17)) 10%,
+      transparent 10%
+    ) 10px 30px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 17)) 90%
+    ) 20px 20px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 18)) 10%,
+      transparent 10%
+    ) 20px 30px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 18)) 90%
+    ) 30px 20px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 19)) 10%,
+      transparent 10%
+    ) 30px 30px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 19)) 90%
+    ) 40px 20px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 20)) 10%,
+      transparent 10%
+    ) 40px 30px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 20)) 90%
+    ) 50px 20px,
+
+
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 21)) 10%,
+      transparent 10%
+    ) 0px 40px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 21)) 90%
+    ) 10px 30px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 22)) 10%,
+      transparent 10%
+    ) 10px 40px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 22)) 90%
+    ) 20px 30px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 23)) 10%,
+      transparent 10%
+    ) 20px 40px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 23)) 90%
+    ) 30px 30px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 24)) 10%,
+      transparent 10%
+    ) 30px 40px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 24)) 90%
+    ) 40px 30px,
+
+    linear-gradient(45deg,
+      extract(@NES-colors, extract(@bgColors, 25)) 10%,
+      transparent 10%
+    ) 40px 40px,
+    linear-gradient(45deg,
+      transparent 90%,
+      extract(@NES-colors, extract(@bgColors, 25)) 90%
+    ) 50px 30px;
+
+  background-size: 50px 50px;
 }
 
 .container {
@@ -90,21 +275,23 @@ body {
   padding: 0;
 }
 
-.container-main {
+.container-main, .container-side {
   float: left;
-  width: @main-width;
   margin: 0 @element-margin;
   padding: 0 @element-padding;
-  border: 1px solid @light-gray;
+  border: 1px solid @darkest-gray;
   border-width: 0 1px;
+}
+
+.container-main {
+  width: @main-width;
   background: @lightest-gray;
+  font-size: 18px;
 }
 
 .container-side {
-  float: left;
   width: @side-width;
-  margin: 0 @element-margin;
-  padding: 0 @element-padding;
+  background: fade(@lightest-gray, 73%);
 }
 
 .magazine {
@@ -120,25 +307,25 @@ body {
   height: 50px;
   margin: 5px;
   border-radius: 25px;
-  background: rgba(240, 240, 240, 1);
+  background: @lighter-gray;
 
-  &:hover {
+  &:hover, &.active {
     .article-button-border {
       top: 3px;
       left: 3px;
       width: 44px;
       height: 44px;
-      border: 3px solid rgba(240, 240, 240, 1);
+      border: 3px solid @lighter-gray;
     }
 
     .article-button-background {
       opacity: 0;
     }
-  }
 
-  &.active {
-    .article-button-background {
-      opacity: 0;
+    .article-button-text {
+      color: @NES-red;
+      border: 1px solid @light-gray;
+      line-height: 44px;
     }
   }
 
@@ -150,17 +337,6 @@ body {
     border-radius: 25px;
     transition: color 1s;
   }
-
-  .for(@skittles); .-each(@name) {
-    &.@{name} > a > .article-button-background {
-      background: @@name;
-      background: radial-gradient(ellipse at center, lighten(@@name, 5%) 0%, @@name 50%, darken(@@name, 15%) 100%); /* W3C */
-    }
-
-    &.@{name}:hover > a > .article-button-text, &.@{name}.active > a > .article-button-text {
-      color: @@name;
-    }
-  }
 }
 
 .article-button-border {
@@ -169,7 +345,7 @@ body {
   left: 25px;
   width: 0px;
   height: 0px;
-  border: 0px solid rgba(240, 240, 240, 0);
+  border: 0px solid fade(@lighter-gray, 0%);
   border-radius: 25px;
   transition: top 1s, left 1s, width 1s, height 1s, border 0.5s;
 }
@@ -184,10 +360,27 @@ body {
   border-radius: 25px;
   color: #fff;
   text-align: center;
-  font-size: 2em;
-  line-height: 40px;
+  font-size: 1.5em;
+  line-height: 45px;
   opacity: 1;
   transition: opacity 1s, color 1s;
+}
+
+.article-button-background {
+  background: @NES-red;
+  background: radial-gradient(
+    ellipse at center,
+    @NES-red 35%,
+    lighten(@NES-red, 3%) 50%,
+    lighten(@NES-red, 7%) 60%,
+    darken(@NES-red, 7%) 75%,
+    darken(@NES-red, 20%) 70%
+  );
+}
+
+.article-button-text {
+  border: 0px solid @light-gray;
+  transition: border 1s;
 }
 
 .article-container {

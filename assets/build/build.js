@@ -126,17 +126,9 @@ var React = require('react'),
     $__0=       Router,Route=$__0.Route,DefaultRoute=$__0.DefaultRoute,RouteHandler=$__0.RouteHandler,Link=$__0.Link;
 
 var ArticleButton = React.createClass({displayName: "ArticleButton",
-  getInitialState: function() {
-    var skittleColors = ["red", "orange", "yellow", "green", "purple"],
-        skittleSeed = Math.floor(Math.min(Math.random() * 5, 5));
-
-    return {
-      skittlesColor: skittleColors[skittleSeed]
-    };
-  },
   render: function() {
     var firstLetter = this.props.title.substring(0, 1),
-        classes = "article-button skittles-" + this.state.skittlesColor + (this.props.isActive ? " active" : "");
+        classes = "article-button" + (this.props.isActive ? " active" : "");
 
     return (
       React.createElement("div", {className: classes}, 
