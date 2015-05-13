@@ -5,9 +5,9 @@ var ArticleButtonList = React.createClass({
   render: function() {
     var articleRows = this.props.articles.map(function(articleData, i) {
       return (
-        <ArticleButton key={articleData.slug} {...articleData} isActive={this.props.activeSlug === articleData.slug} />
+        <ArticleButton key={articleData.slug} {...articleData} />
       );
-    }.bind(this));
+    });
 
     return (
       <div className="article-button-list">

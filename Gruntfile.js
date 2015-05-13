@@ -65,8 +65,6 @@ module.exports = function(grunt) {
         files: [
           'assets/js/*.js',
           'assets/js/*.jsx',
-          'assets/css/**/*.css',
-          'assets/css/*.css',
           'assets/css/less/*.less'
         ],
         tasks: ['less', 'cssmin', 'browserify:dev']

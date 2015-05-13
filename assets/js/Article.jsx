@@ -1,11 +1,15 @@
 var React = require('react'),
     ArticleTitle = require('./ArticleTitle.jsx'),
-    ArticleMeta = require('./ArticleMeta.jsx'),
-    ArticleBody = require('./ArticleBody.jsx');
+    ArticleBanner = require('./ArticleBanner.jsx'),
+    TagList = require('./TagList.jsx'),
+    ArticleBody = require('./ArticleBody.jsx'),
+    ArticleButton = require('./ArticleButton.jsx');
 
 var ArticleStore = {
   "post-one": {
     title: "This is the first post",
+    slug: "",
+    banner: "assets/img/bt_nes_controller.jpg",
     meta: {
       date: "01-01-2001",
       tags: [
@@ -20,6 +24,8 @@ var ArticleStore = {
   },
   "post-two": {
     title: "Another post",
+    slug: "",
+    banner: "assets/img/bt_nes_controller.jpg",
     meta: {
       date: "01-01-2099",
       tags: [
@@ -38,6 +44,7 @@ var Article = React.createClass({
   getEmptyState: function() {
     return {
       title: "",
+      slug: "",
       meta: {
         date: "",
         tags: []
@@ -58,9 +65,13 @@ var Article = React.createClass({
 
     return (
       <div className={classes}>
-        <ArticleTitle title={this.state.title} />
-        <ArticleMeta {...this.state.meta} />
+        <ArticleTitle title={this.state.title} date={this.state.meta.date} />
+        <ArticleBanner src={this.state.banner} alt={this.state.title} />
+        <TagList tags={this.state.meta.tags} />
         <ArticleBody body={this.state.body} />
+        <div className="article-button-container">
+          <ArticleButton title="R" slug={this.state.slug} />ead
+        </div>
       </div>
     );
   }

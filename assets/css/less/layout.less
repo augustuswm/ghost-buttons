@@ -22,7 +22,7 @@ html, body, #react-entry, .container, .container-main, .container-side {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Zelda", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.5em;
 }
 
@@ -273,131 +273,10 @@ body {
   padding: 0;
 }
 
-.container-main, .container-side {
-  float: left;
-  margin: 0 @element-margin;
-  padding: 0 @element-padding;
-  border: 1px solid @darkest-gray;
-  border-width: 0 1px;
-}
-
 .container-main {
+  float: left;
   width: @main-width;
-  background: @lightest-gray;
+  margin: 0 @element-margin / 2 0 @element-margin;
+  padding: 0 @element-padding;
   font-size: 18px;
-}
-
-.container-side {
-  width: @side-width;
-  background: fade(@lightest-gray, 73%);
-}
-
-.magazine {
-}
-
-.article-button-list {
-  overflow: auto;
-}
-
-.article-button {
-  float: left;
-  width: 50px;
-  height: 50px;
-  margin: 5px;
-  border-radius: 25px;
-  background: @lighter-gray;
-
-  &:hover, &.active {
-    .article-button-border {
-      top: 3px;
-      left: 3px;
-      width: 44px;
-      height: 44px;
-      border: 3px solid @lighter-gray;
-    }
-
-    .article-button-background {
-      opacity: 0;
-    }
-
-    .article-button-text {
-      color: @NES-red;
-      border: 1px solid @light-gray;
-      line-height: 44px;
-    }
-  }
-
-  & > a {
-    position: relative;
-    float: left;
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
-    transition: color 1s;
-  }
-}
-
-.article-button-border {
-  position: absolute;
-  top: 25px;
-  left: 25px;
-  width: 0px;
-  height: 0px;
-  border: 0px solid fade(@lighter-gray, 0%);
-  border-radius: 25px;
-  transition: top 1s, left 1s, width 1s, height 1s, border 0.5s;
-}
-
-.article-button-background, .article-button-text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 5px;
-  border-radius: 25px;
-  color: #fff;
-  text-align: center;
-  font-size: 1.5em;
-  line-height: 45px;
-  opacity: 1;
-  transition: opacity 1s, color 1s;
-}
-
-.article-button-background {
-  background: @NES-red;
-  background: radial-gradient(
-    ellipse at center,
-    @NES-red 35%,
-    lighten(@NES-red, 3%) 50%,
-    lighten(@NES-red, 7%) 60%,
-    darken(@NES-red, 7%) 75%,
-    darken(@NES-red, 20%) 70%
-  );
-}
-
-.article-button-text {
-  border: 0px solid @light-gray;
-  transition: border 1s;
-}
-
-.article-container {
-  display: none;
-}
-
-.article-active {
-  display: block;
-}
-
-.taglist-list {
-  margin: 0;
-  padding: 0;
-  overflow: auto;
-  list-style: none;
-}
-
-.taglist-tag {
-  float: left;
-  margin: 0;
-  padding: 2px;
 }

@@ -4,11 +4,10 @@ var React = require('react'),
 
 var ArticleButton = React.createClass({
   render: function() {
-    var firstLetter = this.props.title.substring(0, 1),
-        classes = "article-button" + (this.props.isActive ? " active" : "");
+    var firstLetter = this.props.title.substring(0, 1);
 
     return (
-      <div className={classes}>
+      <div className="article-button">
         <Link to="Article" params={{ slug: this.props.slug }}>
           <div className="article-button-background"></div>
           <div className="article-button-border"></div>

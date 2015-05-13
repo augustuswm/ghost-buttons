@@ -3,7 +3,8 @@ var React = require('react'),
     { Route, DefaultRoute, RouteHandler, Link } = Router,
     Home = require('./Home.jsx'),
     Magazine = require('./Magazine.jsx'),
-    Article = require('./Article.jsx');
+    Article = require('./Article.jsx'),
+    Sidebar = require('./Sidebar.jsx');
 
 var App = React.createClass({
   render: function() {
@@ -12,15 +13,13 @@ var App = React.createClass({
         <div className="container-main">
           <RouteHandler />
         </div>
-        <div className="container-side">
-        </div>
       </div>
     );
   }
 });
 
 var routes = (
-  <Route name="Entry" path="/" handler={App}>
+  <Route name="Entry" path="/index.html" handler={App}>
     <Route name="Home" path="/" handler={Home}>
       <Route name="Magazine" path="magazine" handler={Magazine}>
         <Route name="Article" path="/article/:slug" handler={Article} />
@@ -29,6 +28,6 @@ var routes = (
   </Route>
 );
 
-Router.run(routes, function(Handler) {
+Router.run(routes, Router.HistoryLocation, function(Handler) {
   React.render(<Handler />, document.getElementById("react-entry"));
 });
