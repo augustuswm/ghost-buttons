@@ -9,7 +9,7 @@ var ArticleStore = {
   "post-one": {
     title: "This is the first post",
     slug: "post-one",
-    banner: "/ghost-buttons/assets/img/bt_nes_controller.jpg",
+    banner: "assets/img/bt_nes_controller.jpg",
     meta: {
       date: "01-01-2001",
       tags: [
@@ -25,7 +25,7 @@ var ArticleStore = {
   "post-two": {
     title: "Another post",
     slug: "post-two",
-    banner: "/ghost-buttons/assets/img/bt_nes_controller.jpg",
+    banner: "assets/img/bt_nes_controller.jpg",
     meta: {
       date: "01-01-2099",
       tags: [

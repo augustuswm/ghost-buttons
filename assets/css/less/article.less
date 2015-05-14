@@ -106,7 +106,13 @@
   background: @lightest-gray;
   overflow: auto;
 
-  &:hover, &.article-active {
+  &:hover {
+    .article-banner-image {
+      opacity: 1;
+    }
+  }
+
+  &.article-active {
     .article-banner-image {
       opacity: 1;
     }

@@ -39,8 +39,8 @@ var App = React.createClass({
 });
 
 var routes = (
-  <Route name="Entry" path="" handler={App}>
-    <Route name="Home" path="/home" handler={Home}>
+  <Route name="Entry" path="/" handler={App}>
+    <Route name="Home" path="home" handler={Home}>
       <Route name="Magazine" path="/magazine" handler={Magazine}>
         <Route name="Article" path="/article/:slug" handler={Article} />
       </Route>
@@ -48,6 +48,6 @@ var routes = (
   </Route>
 );
 
-Router.run(routes, Router.HistoryLocation, function(Handler) {
+Router.run(routes, function(Handler) {
   React.render(<Handler />, document.getElementById("react-entry"));
 });
