@@ -11,7 +11,7 @@ var ArticleButton = React.createClass({
         <Link to="Article" params={{ slug: this.props.slug }}>
           <div className="article-button-background"></div>
           <div className="article-button-border"></div>
-          <div className="article-button-text">{firstLetter}</div>
+          <div className="article-button-letter">{firstLetter}</div>
         </Link>
       </div>
     );

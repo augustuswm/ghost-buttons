@@ -8,8 +8,8 @@ var React = require('react'),
 var ArticleStore = {
   "post-one": {
     title: "This is the first post",
-    slug: "",
-    banner: "assets/img/bt_nes_controller.jpg",
+    slug: "post-one",
+    banner: "/ghost-buttons/assets/img/bt_nes_controller.jpg",
     meta: {
       date: "01-01-2001",
       tags: [
@@ -24,8 +24,8 @@ var ArticleStore = {
   },
   "post-two": {
     title: "Another post",
-    slug: "",
-    banner: "assets/img/bt_nes_controller.jpg",
+    slug: "post-two",
+    banner: "/ghost-buttons/assets/img/bt_nes_controller.jpg",
     meta: {
       date: "01-01-2099",
       tags: [
@@ -55,22 +55,20 @@ var Article = React.createClass({
   getInitialState: function() {
     return ArticleStore[this.props.slug] || this.getEmptyState();
   },
-  componentWillReceiveProps: function(nextProps) {
-    if (this.props.slug !== nextProps.slug) {
-      this.setState(ArticleStore[nextProps.slug] || this.getEmptyState());
-    }
-  },
   render: function() {
-    var classes = "article-container" + ((this.state.title) ? " article-active" : "");
+    var classes = "article-container" + ((this.props.active) ? " article-active" : ""),
+        tags = this.props.active ? <TagList tags={this.state.meta.tags} /> : "",
+        body = this.props.active ? <ArticleBody body={this.state.body} /> : "";
 
     return (
       <div className={classes}>
         <ArticleTitle title={this.state.title} date={this.state.meta.date} />
         <ArticleBanner src={this.state.banner} alt={this.state.title} />
-        <TagList tags={this.state.meta.tags} />
-        <ArticleBody body={this.state.body} />
+        {tags}
+        {body}
         <div className="article-button-container">
-          <ArticleButton title="R" slug={this.state.slug} />ead
+          <ArticleButton title="R" slug={this.state.slug} />
+          <div className="article-button-text">ead</div>
         </div>
       </div>
     );

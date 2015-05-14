@@ -7,8 +7,9 @@
 }
 
 .article-button-container {
+  margin: @element-margin 0;
   padding: 0 @element-padding;
-  line-height: 60px;
+  line-height: 50px;
   overflow: auto;
 }
 
@@ -16,11 +17,11 @@
   float: left;
   width: 50px;
   height: 50px;
-  margin: 5px 5px 5px 0;
+  margin: 0 5px 0 0;
   border-radius: 25px;
   background: @lighter-gray;
 
-  &:hover, & > a.active {
+  &:hover {
     .article-button-border {
       top: 3px;
       left: 3px;
@@ -33,7 +34,7 @@
       opacity: 0;
     }
 
-    .article-button-text {
+    .article-button-letter {
       color: @NES-red;
       border: 1px solid @light-gray;
       line-height: 44px;
@@ -61,7 +62,7 @@
   transition: top 1s, left 1s, width 1s, height 1s, border 0.5s;
 }
 
-.article-button-background, .article-button-text {
+.article-button-background, .article-button-letter {
   position: absolute;
   top: 0;
   left: 0;
@@ -90,19 +91,44 @@
 }
 
 .article-button-text {
+  float: left;
+  height: 50px;
+  line-height: 60px;
+}
+
+.article-button-letter {
   border: 0px solid @light-gray;
   transition: border 1s;
 }
 
 .article-container {
+  margin: 5 * @element-margin 0;
   background: @lightest-gray;
-  border: 1px solid @darkest-gray;
   overflow: auto;
-  display: none;
-}
 
-.article-active {
-  display: block;
+  &:hover, &.article-active {
+    .article-banner-image {
+      opacity: 1;
+    }
+
+    .article-button-border {
+      top: 3px;
+      left: 3px;
+      width: 44px;
+      height: 44px;
+      border: 3px solid @lighter-gray;
+    }
+
+    .article-button-background {
+      opacity: 0;
+    }
+
+    .article-button-letter {
+      color: @NES-red;
+      border: 1px solid @light-gray;
+      line-height: 44px;
+    }
+  }
 }
 
 .article-title {
@@ -118,12 +144,17 @@
 }
 
 .article-title-date {
-  float: right;
+  float: left;
+  margin: @element-margin 0 0 0;
   font-size: 0.5em;
+  clear: left;
 }
 
 .article-banner-image {
   width: 100%;
+  border: 1px solid @darkest-gray;
+  opacity: 0.75;
+  transition: opacity 1s;
 }
 
 .article-body {
@@ -141,5 +172,6 @@
 .taglist-tag {
   float: left;
   margin: 0;
-  padding: 2px;
+  padding: 2px 10px;
+  background-color: @lighter-gray;
 }

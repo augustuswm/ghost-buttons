@@ -4,13 +4,18 @@ var React = require('react'),
 
 var Magazine = React.createClass({
   shouldComponentUpdate: function(nextProps, nextState) {
-    return this.props.params !== nextProps.params ||
-           this.state !== nextState;
+    return this.props !== nextProps || this.state !== nextState;
   },
   render: function() {
+    var articles = this.props.slugList.map(function(articleSlug) {
+      return (
+        <Article key={articleSlug} slug={articleSlug} active={this.props.slugList.length === 1} />
+      );
+    }.bind(this));
+
     return (
       <div className="magazine">
-        <Article {...this.props.params} />
+        {articles}
       </div>
     );
   }
