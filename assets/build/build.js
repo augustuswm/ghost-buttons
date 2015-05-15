@@ -15,12 +15,14 @@ var ArticleSlugStore = [
 var App = React.createClass({displayName: "App",
   getInitialState: function() {
     return {
-      slugList: ArticleSlugStore 
+      fullSlugList: ArticleSlugStore,
+      slugList: ArticleSlugStore
     };
   },
   handleSearchUpdate: function(filter) {
     this.setState({
-      slugList: ArticleSlugStore.filter(function(slug) {
+      searchString: filter,
+      slugList: this.state.fullSlugList.filter(function(slug) {
         return slug.search(filter) !== -1;
       })
     });
@@ -30,7 +32,7 @@ var App = React.createClass({displayName: "App",
 
     return (
       React.createElement("div", {className: "container"}, 
-        React.createElement(Search, {onSearchUpdate: this.handleSearchUpdate}), 
+        React.createElement(Search, {searchString: this.state.searchString, onSearchUpdate: this.handleSearchUpdate}), 
         React.createElement("div", {className: "container-main"}, 
           React.createElement(RouteHandler, {slugList: slugList})
         )
@@ -303,7 +305,13 @@ var Search = React.createClass({displayName: "Search",
   render: function() {
     return (
       React.createElement("div", {className: "search-container"}, 
-        React.createElement("input", {className: "search-box", ref: "searchBox", type: "text", placeholder: "Search", onChange: this.handleSearchChange})
+        React.createElement("input", {
+          className: "search-box", 
+          ref: "searchBox", 
+          type: "text", 
+          value: this.props.searchString, 
+          placeholder: "Search", 
+          onChange: this.handleSearchChange})
       )
     );
   }

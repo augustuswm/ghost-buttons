@@ -14,12 +14,14 @@ var ArticleSlugStore = [
 var App = React.createClass({
   getInitialState: function() {
     return {
-      slugList: ArticleSlugStore 
+      fullSlugList: ArticleSlugStore,
+      slugList: ArticleSlugStore
     };
   },
   handleSearchUpdate: function(filter) {
     this.setState({
-      slugList: ArticleSlugStore.filter(function(slug) {
+      searchString: filter,
+      slugList: this.state.fullSlugList.filter(function(slug) {
         return slug.search(filter) !== -1;
       })
     });
@@ -29,7 +31,7 @@ var App = React.createClass({
 
     return (
       <div className="container">
-        <Search onSearchUpdate={this.handleSearchUpdate} />
+        <Search searchString={this.state.searchString} onSearchUpdate={this.handleSearchUpdate} />
         <div className="container-main">
           <RouteHandler slugList={slugList} />
         </div>

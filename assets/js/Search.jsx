@@ -9,7 +9,13 @@ var Search = React.createClass({
   render: function() {
     return (
       <div className="search-container">
-        <input className="search-box" ref="searchBox" type="text" placeholder="Search" onChange={this.handleSearchChange} />
+        <input
+          className="search-box"
+          ref="searchBox"
+          type="text"
+          value={this.props.searchString}
+          placeholder="Search"
+          onChange={this.handleSearchChange} />
       </div>
     );
   }
