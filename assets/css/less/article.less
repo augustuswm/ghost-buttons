@@ -1,3 +1,11 @@
+.magazine {
+  overflow: auto;
+}
+
+.article-block {
+  margin: 70px auto 0;
+}
+
 .article-button-list {
   overflow: auto;
 }
@@ -102,7 +110,8 @@
 }
 
 .article-container {
-  margin: 5 * @element-margin 0;
+  width: @main-width;
+  margin: 50px auto;
   background: @lightest-gray;
   overflow: auto;
 
@@ -135,6 +144,10 @@
       line-height: 44px;
     }
   }
+}
+
+.magazine > .article-container {
+  margin: 30px auto;
 }
 
 .article-title {

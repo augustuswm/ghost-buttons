@@ -4,37 +4,14 @@ var React = require('react'),
     $__0=       Router,Route=$__0.Route,DefaultRoute=$__0.DefaultRoute,RouteHandler=$__0.RouteHandler,Link=$__0.Link,
     Home = require('./Home.jsx'),
     Magazine = require('./Magazine.jsx'),
-    Article = require('./Article.jsx'),
-    Search = require('./Search.jsx');
-
-var ArticleSlugStore = [
-  "post-one",
-  "post-two"
-];
+    Article = require('./Article.jsx');
 
 var App = React.createClass({displayName: "App",
-  getInitialState: function() {
-    return {
-      fullSlugList: ArticleSlugStore,
-      slugList: ArticleSlugStore
-    };
-  },
-  handleSearchUpdate: function(filter) {
-    this.setState({
-      searchString: filter,
-      slugList: this.state.fullSlugList.filter(function(slug) {
-        return slug.search(filter) !== -1;
-      })
-    });
-  },
   render: function() {
-    var slugList = this.props.params && this.props.params.slug ? [this.props.params.slug] : this.state.slugList;
-
     return (
       React.createElement("div", {className: "container"}, 
-        React.createElement(Search, {searchString: this.state.searchString, onSearchUpdate: this.handleSearchUpdate}), 
         React.createElement("div", {className: "container-main"}, 
-          React.createElement(RouteHandler, {slugList: slugList})
+          React.createElement(RouteHandler, null)
         )
       )
     );
@@ -43,19 +20,16 @@ var App = React.createClass({displayName: "App",
 
 var routes = (
   React.createElement(Route, {name: "Entry", path: "/", handler: App}, 
-    React.createElement(Route, {name: "Home", path: "home", handler: Home}, 
-      React.createElement(Route, {name: "Magazine", path: "/magazine", handler: Magazine}, 
-        React.createElement(Route, {name: "Article", path: "/article/:slug", handler: Article})
-      )
-    )
+    React.createElement(Route, {name: "Magazine", path: "magazine", handler: Magazine}), 
+    React.createElement(Route, {name: "Article", path: "article/:slug", handler: Magazine})
   )
 );
 
-Router.run(routes, function(Handler) {
+Router.run(routes, Router.HistoryLocation, function(Handler) {
   React.render(React.createElement(Handler, null), document.getElementById("react-entry"));
 });
 
-},{"./Article.jsx":2,"./Home.jsx":9,"./Magazine.jsx":10,"./Search.jsx":11,"react":209,"react-router":40}],2:[function(require,module,exports){
+},{"./Article.jsx":2,"./Home.jsx":9,"./Magazine.jsx":10,"react":209,"react-router":40}],2:[function(require,module,exports){
 var React = require('react'),
     ArticleTitle = require('./ArticleTitle.jsx'),
     ArticleBanner = require('./ArticleBanner.jsx'),
@@ -67,7 +41,7 @@ var ArticleStore = {
   "post-one": {
     title: "This is the first post",
     slug: "post-one",
-    banner: "assets/img/bt_nes_controller.jpg",
+    banner: "/assets/img/bt_nes_controller.jpg",
     meta: {
       date: "01-01-2001",
       tags: [
@@ -83,7 +57,7 @@ var ArticleStore = {
   "post-two": {
     title: "Another post",
     slug: "post-two",
-    banner: "assets/img/bt_nes_controller.jpg",
+    banner: "/assets/img/bt_nes_controller.jpg",
     meta: {
       date: "01-01-2099",
       tags: [
@@ -270,22 +244,57 @@ module.exports = Home;
 },{"./Magazine.jsx":10,"react":209}],10:[function(require,module,exports){
 var React = require('react'),
     Immutable = require('Immutable'),
-    Article = require('./Article.jsx');
+    Article = require('./Article.jsx'),
+    Search = require('./Search.jsx');
+
+var ArticleSlugStore = [
+  "post-one",
+  "post-two"
+];
 
 var Magazine = React.createClass({displayName: "Magazine",
-  shouldComponentUpdate: function(nextProps, nextState) {
-    return this.props !== nextProps || this.state !== nextState;
+  getInitialState: function() {
+    return {
+      fullSlugList: ArticleSlugStore,
+      slugList: this.props.params && this.props.params.slug && [this.props.params.slug] || ArticleSlugStore,
+      onArticle: this.props.params && this.props.params.slug
+    };
+  },
+  filterStrings: function(list, filter) {
+    return list.filter(function(element) {
+      return element.search(filter) !== -1;
+    });
+  },
+  handleSearchUpdate: function(filter) {
+    this.setState({
+      searchString: filter,
+      slugList: this.filterStrings(this.state.fullSlugList, filter),
+      onArticle: false
+    });
+  },
+  componentWillReceiveProps: function(nextProps) {
+    this.setState({
+      slugList: nextProps.params && nextProps.params.slug && [nextProps.params.slug] || this.filterStrings(this.state.fullSlugList, this.state.searchString),
+      onArticle: nextProps.params && nextProps.params.slug
+    });
   },
   render: function() {
-    var articles = this.props.slugList.map(function(articleSlug) {
-      return (
-        React.createElement(Article, {key: articleSlug, slug: articleSlug, active: this.props.slugList.length === 1})
-      );
-    }.bind(this));
+    var active = this.state.slugList.length === 1,
+        articles = this.state.slugList.map(function(articleSlug) {
+          return (
+            React.createElement(Article, {key: articleSlug, slug: articleSlug, active: active})
+          );
+        });
 
     return (
       React.createElement("div", {className: "magazine"}, 
-        articles
+        React.createElement(Search, {
+          searchString: this.state.searchString, 
+          onSearchUpdate: this.handleSearchUpdate, 
+          disabled: this.state.onArticle}), 
+        React.createElement("div", {className: "article-block"}, 
+          articles
+        )
       )
     );
   }
@@ -293,7 +302,7 @@ var Magazine = React.createClass({displayName: "Magazine",
 
 module.exports = Magazine;
 
-},{"./Article.jsx":2,"Immutable":14,"react":209}],11:[function(require,module,exports){
+},{"./Article.jsx":2,"./Search.jsx":11,"Immutable":14,"react":209}],11:[function(require,module,exports){
 var React = require('react');
 
 var Search = React.createClass({displayName: "Search",
@@ -303,15 +312,31 @@ var Search = React.createClass({displayName: "Search",
     );
   },
   render: function() {
+    var author = this.props.author || "awm",
+        searchClasses = [
+          "search-box",
+          this.props.searchString ? "has-active-search" : ""
+        ].join(" ");
+
     return (
-      React.createElement("div", {className: "search-container"}, 
-        React.createElement("input", {
-          className: "search-box", 
-          ref: "searchBox", 
-          type: "text", 
-          value: this.props.searchString, 
-          placeholder: "Search", 
-          onChange: this.handleSearchChange})
+      React.createElement("div", {className: "header-container"}, 
+        React.createElement("div", {className: "nav-container col-md-4"}
+        ), 
+        React.createElement("div", {className: "search-container col-md-4"}, 
+          React.createElement("input", {
+            className: searchClasses, 
+            ref: "searchBox", 
+            type: "text", 
+            value: this.props.searchString, 
+            placeholder: '\uF002', 
+            onChange: this.handleSearchChange, 
+            disabled: this.props.disabled})
+        ), 
+        React.createElement("div", {className: "author col-md-4"}, 
+          React.createElement("div", {className: "author-name"}, 
+            author
+          )
+        )
       )
     );
   }
