@@ -1,0 +1,44 @@
+.author-block {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0 @element-padding / 2;
+  padding: @element-padding / 2;
+  background: @darker-gray;
+  z-index: 20;
+
+  &:hover {
+    .author-name {
+      color: @lightest-gray;
+    }
+
+    .contact-list {
+      display: block;
+    }
+  }
+}
+
+.author-name {
+  float: right;
+  color: @light-gray;
+  transition: 0.3s;
+}
+
+.contact-list {
+  margin: 0;
+  padding: 0;
+  list-style: none; 
+  display: none;
+  clear: right;
+}
+
+.contact-item {
+  font-family: "Hind", "FontAwesome", sans-serif;
+  text-align: right;
+}
+
+.contact-icon {
+  width: 30px;
+  display: inline-block;
+  text-align: right;
+}

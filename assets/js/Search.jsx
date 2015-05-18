@@ -15,22 +15,15 @@ var Search = React.createClass({
 
     return (
       <div className="header-container">
-        <div className="nav-container col-md-4">
-        </div>
-        <div className="search-container col-md-4">
+        <div className="search-container">
           <input
             className={searchClasses}
             ref="searchBox"
             type="text"
             value={this.props.searchString}
-            placeholder={'\uF002'}
+            placeholder={"\uF002"}
             onChange={this.handleSearchChange}
             disabled={this.props.disabled} />
-        </div>
-        <div className="author col-md-4">
-          <div className="author-name">
-            {author}
-          </div>
         </div>
       </div>
     );
