@@ -43,7 +43,8 @@ module.exports = function(grunt) {
           ]
         },
         files: {
-          'assets/css/style.css' : 'assets/css/less/style.less'
+          'assets/css/style.css' : 'assets/css/less/style.less',
+          'assets/css/backgrounds.css' : 'assets/css/less/backgrounds.less'
         }
       }
     },

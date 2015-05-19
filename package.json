@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "browserify": "^10.1.1",
+    "express": "^4.12.4",
     "grunt-browserify": "^3.8.0",
     "grunt-contrib-cssmin": "^0.12.2",
     "grunt-contrib-less": "^1.0.1",
@@ -21,7 +22,9 @@
     "react": "^0.13.2",
     "react-async": "^2.1.0",
     "react-router": "^0.13.3",
-    "reactify": "^1.1.0"
+    "reactify": "^1.1.0",
+    "socket.io": "^1.3.5",
+    "socket.io-client": "^1.3.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

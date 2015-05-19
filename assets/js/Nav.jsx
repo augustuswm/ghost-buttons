@@ -8,7 +8,7 @@ var Nav = React.createClass({
         <div className="nav-name">
           <span className="nav-A"></span>
         </div>
-        <NavList />
+        <NavList compileHandler={this.props.compileHandler} />
       </div>      
     );
   }

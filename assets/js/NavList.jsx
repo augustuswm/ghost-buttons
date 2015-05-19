@@ -10,28 +10,7 @@ var NavList = React.createClass({
         {label: "Read", icon: "\uF1EA", src: "Magazine", callback: function() {}},
         {label: "Watch", icon: "\uF152", src: "Gallery", callback: function() {}},
         {label: "Play", icon: "\uF1D9", src: "Arcade", callback: function() {}},
-        {label: "Recompile BG", icon: "\uF1D9", src: "Storage", callback: function(e) {
-          e.preventDefault();
-          var xmlhttp = new XMLHttpRequest();
-
-          xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
-              if(xmlhttp.status == 200){
-                // console.log("Recompiled");
-                var sheet = document.getElementById("main-sheet"),
-                    sig = Math.floor(Math.random() * 10000);
-                sheet.href = sheet.href.replace(/\?d=\d+^/, "?d=" + sig);
-              } else if(xmlhttp.status == 400) {
-                // console.log('There was an error 400');
-              } else {
-                // console.log('something else other than 200 was returned');
-              }
-            }
-          }
-
-          xmlhttp.open("GET", "less.compile", true);
-          xmlhttp.send();
-        }}
+        {label: "Recompile BG", icon: "\uF1D9", src: "Storage", callback: this.props.compileHandler}
       ]
     };
   },
