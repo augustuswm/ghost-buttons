@@ -1,6 +1,7 @@
 .nav-name {
-  margin: 0 15px;
-  padding: 3rem 2rem 2rem;
+  float: left;
+  padding: 4rem 4rem 3rem;
+  background: @darker-gray;
 }
 
 .nav-A {
@@ -23,10 +24,13 @@
   left: 0;
   margin: 0 @element-padding / 2;
   padding: 15px 0;
-  background: @darker-gray;
   z-index: 20;
 
   &:hover {
+    .nav-name {
+      padding: 4rem 4rem 2rem;
+    }
+
     .nav-A {
       background: @lightest-gray;
       color: @lightest-gray;
@@ -46,13 +50,15 @@
 @media (max-width: 768px) {
   .nav-block {
     margin-left: 0;
+    padding: 0 0 15px;
   }
 }
 
 .nav-list {
   margin: 0;
   padding: 15px 15px 0;
-  list-style: none; 
+  list-style: none;
+  background: @darker-gray;
   display: none;
   clear: left;
 }
