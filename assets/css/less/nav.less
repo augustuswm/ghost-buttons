@@ -23,7 +23,7 @@
   top: 0;
   left: 0;
   margin: 0 @element-padding / 2;
-  padding: 15px 0;
+  padding: 0 0 15px;
   z-index: 20;
 
   @media (min-width: 769px) {
@@ -53,6 +53,18 @@
   .nav-block {
     margin-left: 0;
     padding: 0 0 15px;
+  }
+}
+
+.nav-block-background {
+  position: absolute;
+  top: 70px;
+  width: 35%;
+  z-index: -1;
+
+  .nav-list {
+    width: 100%;
+    display: block;
   }
 }
 

@@ -5,6 +5,7 @@ var React = require('react'),
     Home = require('./Home.jsx'),
     Magazine = require('./Magazine.jsx'),
     Nav = require('./Nav.jsx'),
+    BackgroundNav = require('./BackgroundNav.jsx'),
     Author = require('./Author.jsx');
 
 var compileHandler = function(e) {
@@ -34,15 +35,12 @@ var App = React.createClass({
 
     return (
       <div className={toggleNavClass}>
-        <div className="backgrounds">
-          <div className="bg1"></div>
-          <div className="bg2"></div>
-        </div>
         <div className="container">
           <div className="container-main">
+            <BackgroundNav compileHandler={compileHandler} />
+            <RouteHandler />
             <Nav compileHandler={compileHandler} toggleNav={this.toggleNav} />
             <Author />
-            <RouteHandler />
           </div>
         </div>
       </div>
