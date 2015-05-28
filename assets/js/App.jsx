@@ -19,13 +19,31 @@ io.on("recompiled", function(data) {
 });
 
 var App = React.createClass({
+  getInitialState: function() {
+    return {
+      navActive: false 
+    };
+  },
+  toggleNav: function() {
+    this.setState({
+      navActive: !this.state.navActive 
+    });
+  },
   render: function() {
+    var toggleNavClass = this.state.navActive ? "nav-active" : "";
+
     return (
-      <div className="container">
-        <div className="container-main">
-          <Nav compileHandler={compileHandler} />
-          <Author />
-          <RouteHandler />
+      <div className={toggleNavClass}>
+        <div className="backgrounds">
+          <div className="bg1"></div>
+          <div className="bg2"></div>
+        </div>
+        <div className="container">
+          <div className="container-main">
+            <Nav compileHandler={compileHandler} toggleNav={this.toggleNav} />
+            <Author />
+            <RouteHandler />
+          </div>
         </div>
       </div>
     );

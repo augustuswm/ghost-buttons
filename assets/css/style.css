@@ -1811,8 +1811,6 @@ body,
 .container,
 .container-main,
 .container-side {
-  height: 100%;
-  min-height: 100%;
   box-sizing: border-box;
   font-family: "Hind", sans-serif;
 }
@@ -1826,7 +1824,6 @@ h6 {
   font-size: 1.5em;
 }
 #react-entry {
-  position: absolute;
   width: 100%;
   z-index: 5;
 }
@@ -1841,6 +1838,7 @@ h6 {
   min-height: 100%;
   margin: 0 auto;
   padding: 0;
+  z-index: 50;
 }
 .container-main {
   width: 100%;
@@ -1869,16 +1867,18 @@ h6 {
   padding: 15px 0;
   z-index: 20;
 }
-.nav-block:hover .nav-name {
-  padding: 4rem 4rem 2rem;
-}
-.nav-block:hover .nav-A {
-  background: #f2f2f2;
-  color: #f2f2f2;
-  box-shadow: -2.5rem -2.5rem, 2.5rem -2.5rem, -2.5rem -1.25rem, -1.25rem -1.25rem, 1.25rem -1.25rem, 2.5rem -1.25rem, -2.5rem 0, 2.5rem 0, -2.5rem 1.25rem, 0 1.25rem, 2.5rem 1.25rem;
-}
-.nav-block:hover .nav-list {
-  display: block;
+@media (min-width: 769px) {
+  .nav-block:hover .nav-name {
+    padding: 4rem 4rem 2rem;
+  }
+  .nav-block:hover .nav-A {
+    background: #f2f2f2;
+    color: #f2f2f2;
+    box-shadow: -2.5rem -2.5rem, 2.5rem -2.5rem, -2.5rem -1.25rem, -1.25rem -1.25rem, 1.25rem -1.25rem, 2.5rem -1.25rem, -2.5rem 0, 2.5rem 0, -2.5rem 1.25rem, 0 1.25rem, 2.5rem 1.25rem;
+  }
+  .nav-block:hover .nav-list {
+    display: block;
+  }
 }
 @media (max-width: 768px) {
   .nav-block {
@@ -1950,14 +1950,17 @@ h6 {
   text-align: right;
 }
 .magazine {
-  overflow: auto;
+  overflow: hidden;
 }
 .article-block {
-  margin: 70px auto 0;
+  margin: 0 auto 0;
+  padding-top: 20px;
+  overflow: auto;
 }
 @media (max-width: 768px) {
   .article-block {
-    margin: 100px auto 0;
+    margin: 0 auto;
+    padding-top: 20px;
   }
 }
 .article-button-list {
@@ -2154,8 +2157,14 @@ h6 {
   .nav-active .nav-block {
     width: 33%;
   }
-  .nav-active .backgrounds,
-  .nav-active .article-block {
-    margin-left: 33%;
+  .nav-active .nav-name {
+    padding: 4rem 4rem 2rem;
+  }
+  .nav-active .magazine {
+    -webkit-transform: translate(33%, 0);
+            transform: translate(33%, 0);
+  }
+  .nav-active .nav-list {
+    display: block;
   }
 }

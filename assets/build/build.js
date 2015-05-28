@@ -20,13 +20,31 @@ io.on("recompiled", function(data) {
 });
 
 var App = React.createClass({displayName: "App",
+  getInitialState: function() {
+    return {
+      navActive: false 
+    };
+  },
+  toggleNav: function() {
+    this.setState({
+      navActive: !this.state.navActive 
+    });
+  },
   render: function() {
+    var toggleNavClass = this.state.navActive ? "nav-active" : "";
+
     return (
-      React.createElement("div", {className: "container"}, 
-        React.createElement("div", {className: "container-main"}, 
-          React.createElement(Nav, {compileHandler: compileHandler}), 
-          React.createElement(Author, null), 
-          React.createElement(RouteHandler, null)
+      React.createElement("div", {className: toggleNavClass}, 
+        React.createElement("div", {className: "backgrounds"}, 
+          React.createElement("div", {className: "bg1"}), 
+          React.createElement("div", {className: "bg2"})
+        ), 
+        React.createElement("div", {className: "container"}, 
+          React.createElement("div", {className: "container-main"}, 
+            React.createElement(Nav, {compileHandler: compileHandler, toggleNav: this.toggleNav}), 
+            React.createElement(Author, null), 
+            React.createElement(RouteHandler, null)
+          )
         )
       )
     );
@@ -411,7 +429,7 @@ var Nav = React.createClass({displayName: "Nav",
   render: function() {
     return (
       React.createElement("div", {className: "nav-block"}, 
-        React.createElement("div", {className: "nav-name"}, 
+        React.createElement("div", {className: "nav-name", onClick: this.props.toggleNav}, 
           React.createElement("span", {className: "nav-A"})
         ), 
         React.createElement(NavList, {compileHandler: this.props.compileHandler})
