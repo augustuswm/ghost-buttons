@@ -8,24 +8,24 @@ var React = require('react'),
     BackgroundNav = require('./BackgroundNav.jsx'),
     Author = require('./Author.jsx');
 
+var compileHandler = function(e) {
+      e.preventDefault();
+      io.emit("compile", "");
+    };
+
 var linkStore = [
       {label: "Consume", icon: "\uF03A", src: "Storage", callback: function() {}},
       {label: "Read", icon: "\uF1EA", src: "Magazine", callback: function() {}},
       {label: "Watch", icon: "\uF152", src: "Gallery", callback: function() {}},
       {label: "Play", icon: "\uF1D9", src: "Arcade", callback: function() {}},
-      {label: "Recompile BG", icon: "\uF1D9", src: "Storage", callback: compileHandler}
+      {label: "Recompile BG", icon: "\uF1D9", src: "/", callback: compileHandler}
     ];
 
 var contactLinkStore = [
       {label: "github", src: "https://github.com/augustuswm", icon: "\uF09B", rel: "external", callback: function() {}},
-      {label: "gmail", src: "gusmayo@gmail.com", icon: "\uF003", rel: "external", callback: function() {}},
+      {label: "gmail", src: "https://gusmayo@gmail.com", icon: "\uF003", rel: "external", callback: function() {}},
       {label: "twitter", src: "https://twitter.com/augustuswm", icon: "\uF099", rel: "external", callback: function() {}}
     ];
-
-var compileHandler = function(e) {
-      e.preventDefault();
-      io.emit("compile", "");
-    };
 
 io.on("recompiled", function(data) {
   if (data && data.css) {
@@ -54,7 +54,7 @@ var App = React.createClass({
             <BackgroundNav linkList={linkStore.concat(contactLinkStore)} />
             <RouteHandler />
             <Nav linkList={linkStore} toggleNav={this.toggleNav} />
-            <Author />
+            <Author linkList={contactLinkStore} />
           </div>
         </div>
       </div>

@@ -9,24 +9,24 @@ var React = require('react'),
     BackgroundNav = require('./BackgroundNav.jsx'),
     Author = require('./Author.jsx');
 
+var compileHandler = function(e) {
+      e.preventDefault();
+      io.emit("compile", "");
+    };
+
 var linkStore = [
       {label: "Consume", icon: "\uF03A", src: "Storage", callback: function() {}},
       {label: "Read", icon: "\uF1EA", src: "Magazine", callback: function() {}},
       {label: "Watch", icon: "\uF152", src: "Gallery", callback: function() {}},
       {label: "Play", icon: "\uF1D9", src: "Arcade", callback: function() {}},
-      {label: "Recompile BG", icon: "\uF1D9", src: "Storage", callback: compileHandler}
+      {label: "Recompile BG", icon: "\uF1D9", src: "/", callback: compileHandler}
     ];
 
 var contactLinkStore = [
       {label: "github", src: "https://github.com/augustuswm", icon: "\uF09B", rel: "external", callback: function() {}},
-      {label: "gmail", src: "gusmayo@gmail.com", icon: "\uF003", rel: "external", callback: function() {}},
+      {label: "gmail", src: "https://gusmayo@gmail.com", icon: "\uF003", rel: "external", callback: function() {}},
       {label: "twitter", src: "https://twitter.com/augustuswm", icon: "\uF099", rel: "external", callback: function() {}}
     ];
-
-var compileHandler = function(e) {
-      e.preventDefault();
-      io.emit("compile", "");
-    };
 
 io.on("recompiled", function(data) {
   if (data && data.css) {
@@ -55,7 +55,7 @@ var App = React.createClass({displayName: "App",
             React.createElement(BackgroundNav, {linkList: linkStore.concat(contactLinkStore)}), 
             React.createElement(RouteHandler, null), 
             React.createElement(Nav, {linkList: linkStore, toggleNav: this.toggleNav}), 
-            React.createElement(Author, null)
+            React.createElement(Author, {linkList: contactLinkStore})
           )
         )
       )
@@ -289,7 +289,7 @@ var Author = React.createClass({displayName: "Author",
         React.createElement("div", {className: "author-name"}, 
           this.state.author
         ), 
-        React.createElement(ContactList, null)
+        React.createElement(ContactList, {linkList: this.props.linkList})
       )
     );
   }
@@ -316,55 +316,30 @@ var BackgroundNav = React.createClass({displayName: "BackgroundNav",
 module.exports = BackgroundNav;
 
 },{"./NavList.jsx":15,"react":214}],11:[function(require,module,exports){
-var React = require('react');
+var React = require('react'),
+    Router = require('react-router'),
+    $__0=       Router,Route=$__0.Route,DefaultRoute=$__0.DefaultRoute,RouteHandler=$__0.RouteHandler,Link=$__0.Link;;
 
 var ContactList = React.createClass({displayName: "ContactList",
-  getInitialState: function() {
-    return {
-      github: {
-        label: "github",
-        src: "https://github.com/augustuswm",
-        icon: "\uF09B"
-      },
-      email: {
-        label: "gmail",
-        src: "gusmayo@gmail.com",
-        icon: "\uF003"
-      },
-      twitter: {
-        label: "twitter",
-        src: "https://twitter.com/augustuswm",
-        icon: "\uF099"
-      }
-    };
-  },
   render: function() {
-    return (
-      React.createElement("ul", {className: "contact-list"}, 
-        React.createElement("li", {className: "contact-item github"}, 
-          React.createElement("a", {href: this.state.github.src}, 
-            this.state.github.label, 
+    var contactLinks = this.props.linkList.map(function(link) {
+      var itemClass = "contact-item" + (link.label ? " " + link.label : "");
+
+      return (
+        React.createElement("li", {className: itemClass, key: link.label}, 
+          React.createElement(Link, {to: link.src, rel: link.rel, onClick: link.callback}, 
+            link.label, 
             React.createElement("span", {className: "contact-icon"}, 
-              this.state.github.icon
-            )
-          )
-        ), 
-        React.createElement("li", {className: "contact-item email"}, 
-          React.createElement("a", {href: this.state.email.src}, 
-            this.state.email.label, 
-            React.createElement("span", {className: "contact-icon"}, 
-              this.state.email.icon
-            )
-          )
-        ), 
-        React.createElement("li", {className: "contact-item twitter"}, 
-          React.createElement("a", {href: this.state.twitter.src}, 
-            this.state.twitter.label, 
-            React.createElement("span", {className: "contact-icon"}, 
-              this.state.twitter.icon
+              link.icon
             )
           )
         )
+      );
+    });
+
+    return (
+      React.createElement("ul", {className: "contact-list"}, 
+        contactLinks
       )
     );
   }
@@ -373,7 +348,7 @@ var ContactList = React.createClass({displayName: "ContactList",
 
 module.exports = ContactList;
 
-},{"react":214}],12:[function(require,module,exports){
+},{"react":214,"react-router":45}],12:[function(require,module,exports){
 var React = require('react'),
     Magazine = require('./Magazine.jsx');
 
@@ -5815,6 +5790,13 @@ var PathUtils = {
   },
 
   /**
+   * Returns true if the given path is a full URL
+   */
+  isURL: function isURL(path) {
+    return path.match(/^(https?:\/\/)/i) !== null;
+  },
+
+  /**
    * Joins two URL paths together.
    */
   join: function join(a, b) {
@@ -7178,7 +7160,7 @@ function createRouter(options) {
        */
       makePath: function makePath(to, params, query) {
         var path;
-        if (PathUtils.isAbsolute(to)) {
+        if (PathUtils.isAbsolute(to) || PathUtils.isURL(to)) {
           path = to;
         } else {
           var route = to instanceof Route ? to : Router.namedRoutes[to];

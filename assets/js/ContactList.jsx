@@ -1,52 +1,27 @@
-var React = require('react');
+var React = require('react'),
+    Router = require('react-router'),
+    { Route, DefaultRoute, RouteHandler, Link } = Router;;
 
 var ContactList = React.createClass({
-  getInitialState: function() {
-    return {
-      github: {
-        label: "github",
-        src: "https://github.com/augustuswm",
-        icon: "\uF09B"
-      },
-      email: {
-        label: "gmail",
-        src: "gusmayo@gmail.com",
-        icon: "\uF003"
-      },
-      twitter: {
-        label: "twitter",
-        src: "https://twitter.com/augustuswm",
-        icon: "\uF099"
-      }
-    };
-  },
   render: function() {
+    var contactLinks = this.props.linkList.map(function(link) {
+      var itemClass = "contact-item" + (link.label ? " " + link.label : "");
+
+      return (
+        <li className={itemClass} key={link.label}>
+          <Link to={link.src} rel={link.rel} onClick={link.callback} >
+            {link.label}
+            <span className="contact-icon">
+              {link.icon}
+            </span>
+          </Link>
+        </li>
+      );
+    });
+
     return (
       <ul className="contact-list">
-        <li className="contact-item github">
-          <a href={this.state.github.src}>
-            {this.state.github.label}
-            <span className="contact-icon">
-              {this.state.github.icon}
-            </span>
-          </a>
-        </li>
-        <li className="contact-item email">
-          <a href={this.state.email.src}>
-            {this.state.email.label}
-            <span className="contact-icon">
-              {this.state.email.icon}
-            </span>
-          </a>
-        </li>
-        <li className="contact-item twitter">
-          <a href={this.state.twitter.src}>
-            {this.state.twitter.label}
-            <span className="contact-icon">
-              {this.state.twitter.icon}
-            </span>
-          </a>
-        </li>
+        {contactLinks}
       </ul>
     );
   }

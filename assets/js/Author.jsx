@@ -13,7 +13,7 @@ var Author = React.createClass({
         <div className="author-name">
           {this.state.author}
         </div>
-        <ContactList />
+        <ContactList linkList={this.props.linkList} />
       </div>
     );
   }
