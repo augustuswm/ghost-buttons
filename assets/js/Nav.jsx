@@ -1,6 +1,6 @@
 var React = require('react'),
     NavList = require('./NavList.jsx');
-
+    
 var Nav = React.createClass({
   render: function() {
     return (
@@ -8,7 +8,7 @@ var Nav = React.createClass({
         <div className="nav-name" onClick={this.props.toggleNav}>
           <span className="nav-A"></span>
         </div>
-        <NavList compileHandler={this.props.compileHandler} />
+        <NavList linkList={this.props.linkList} />
       </div>      
     );
   }

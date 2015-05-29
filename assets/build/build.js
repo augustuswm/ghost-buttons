@@ -9,6 +9,20 @@ var React = require('react'),
     BackgroundNav = require('./BackgroundNav.jsx'),
     Author = require('./Author.jsx');
 
+var linkStore = [
+      {label: "Consume", icon: "\uF03A", src: "Storage", callback: function() {}},
+      {label: "Read", icon: "\uF1EA", src: "Magazine", callback: function() {}},
+      {label: "Watch", icon: "\uF152", src: "Gallery", callback: function() {}},
+      {label: "Play", icon: "\uF1D9", src: "Arcade", callback: function() {}},
+      {label: "Recompile BG", icon: "\uF1D9", src: "Storage", callback: compileHandler}
+    ];
+
+var contactLinkStore = [
+      {label: "github", src: "https://github.com/augustuswm", icon: "\uF09B", rel: "external", callback: function() {}},
+      {label: "gmail", src: "gusmayo@gmail.com", icon: "\uF003", rel: "external", callback: function() {}},
+      {label: "twitter", src: "https://twitter.com/augustuswm", icon: "\uF099", rel: "external", callback: function() {}}
+    ];
+
 var compileHandler = function(e) {
       e.preventDefault();
       io.emit("compile", "");
@@ -38,9 +52,9 @@ var App = React.createClass({displayName: "App",
       React.createElement("div", {className: toggleNavClass}, 
         React.createElement("div", {className: "container"}, 
           React.createElement("div", {className: "container-main"}, 
-            React.createElement(BackgroundNav, {compileHandler: compileHandler}), 
+            React.createElement(BackgroundNav, {linkList: linkStore.concat(contactLinkStore)}), 
             React.createElement(RouteHandler, null), 
-            React.createElement(Nav, {compileHandler: compileHandler, toggleNav: this.toggleNav}), 
+            React.createElement(Nav, {linkList: linkStore, toggleNav: this.toggleNav}), 
             React.createElement(Author, null)
           )
         )
@@ -292,7 +306,7 @@ var BackgroundNav = React.createClass({displayName: "BackgroundNav",
   render: function() {
     return (
       React.createElement("div", {className: "nav-block-background"}, 
-        React.createElement(NavList, {compileHandler: this.props.compileHandler})
+        React.createElement(NavList, {linkList: this.props.linkList})
       )
     );
   }
@@ -439,7 +453,7 @@ module.exports = Magazine;
 },{"./Article.jsx":2,"./Search.jsx":16,"Immutable":19,"react":214}],14:[function(require,module,exports){
 var React = require('react'),
     NavList = require('./NavList.jsx');
-
+    
 var Nav = React.createClass({displayName: "Nav",
   render: function() {
     return (
@@ -447,7 +461,7 @@ var Nav = React.createClass({displayName: "Nav",
         React.createElement("div", {className: "nav-name", onClick: this.props.toggleNav}, 
           React.createElement("span", {className: "nav-A"})
         ), 
-        React.createElement(NavList, {compileHandler: this.props.compileHandler})
+        React.createElement(NavList, {linkList: this.props.linkList})
       )      
     );
   }
@@ -462,21 +476,10 @@ var React = require('react'),
     $__0=       Router,Route=$__0.Route,DefaultRoute=$__0.DefaultRoute,RouteHandler=$__0.RouteHandler,Link=$__0.Link;
 
 var NavList = React.createClass({displayName: "NavList",
-  getInitialState: function() {
-    return {
-      linkList: [
-        {label: "Consume", icon: "\uF03A", src: "Storage", callback: function() {}},
-        {label: "Read", icon: "\uF1EA", src: "Magazine", callback: function() {}},
-        {label: "Watch", icon: "\uF152", src: "Gallery", callback: function() {}},
-        {label: "Play", icon: "\uF1D9", src: "Arcade", callback: function() {}},
-        {label: "Recompile BG", icon: "\uF1D9", src: "Storage", callback: this.props.compileHandler}
-      ]
-    };
-  },
   render: function() {
-    var navLinks = this.state.linkList.map(function(link) {
+    var navLinks = this.props.linkList.map(function(link) {
       return (
-        React.createElement(Link, {to: link.src, className: "nav-item", key: link.label, onClick: link.callback}, 
+        React.createElement(Link, {to: link.src, rel: link.rel, className: "nav-item", key: link.label, onClick: link.callback}, 
           React.createElement("li", null, 
             React.createElement("span", {className: "nav-icon"}, link.icon), link.label
           )
