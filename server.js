@@ -52,7 +52,7 @@ io.on("connection", function(socket) {
         function(error, output) {
           fs.writeFile('assets/build/backgrounds.min.css', output.css, function(error) {
             console.log(error);
-            socket.emit("recompiled", output);
+            io.sockets.emit("recompiled", output);
           });
         }
       );

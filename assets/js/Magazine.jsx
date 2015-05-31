@@ -13,12 +13,14 @@ var Magazine = React.createClass({
     return {
       fullSlugList: ArticleSlugStore,
       slugList: this.props.params && this.props.params.slug && [this.props.params.slug] || ArticleSlugStore,
-      onArticle: this.props.params && this.props.params.slug
+      onArticle: this.props.params && this.props.params.slug || false,
+      searchString: ""
     };
   },
   filterStrings: function(list, filter) {
+    var filterString = filter.toLowerCase();
     return list.filter(function(element) {
-      return element.search(filter) !== -1;
+      return element.toLowerCase().search(filterString) !== -1;
     });
   },
   handleSearchUpdate: function(filter) {
@@ -31,10 +33,15 @@ var Magazine = React.createClass({
   componentWillReceiveProps: function(nextProps) {
     this.setState({
       slugList: nextProps.params && nextProps.params.slug && [nextProps.params.slug] || this.filterStrings(this.state.fullSlugList, this.state.searchString),
-      onArticle: nextProps.params && nextProps.params.slug
+      onArticle: nextProps.params && nextProps.params.slug && true || false
     });
   },
+  shouldComponentUpdate: function(nextProps, nextState) {
+    console.log(this.state.slugList.length, nextState.slugList.length);
+    return this.state.slugList.length !== nextState.slugList.length;
+  },
   render: function() {
+    console.log("Render Magazine");
     var active = this.state.slugList.length === 1,
         articles = this.state.slugList.map(function(articleSlug) {
           return (

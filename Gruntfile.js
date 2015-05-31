@@ -83,5 +83,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-env');
 
   grunt.registerTask('default', ['watch']);
-  grunt.registerTask('build', ['env:build', 'cssmin', 'browserify:build']);
+  grunt.registerTask('build', ['env:build', 'less', 'cssmin', 'browserify:build']);
 };

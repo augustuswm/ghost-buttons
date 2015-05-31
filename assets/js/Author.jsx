@@ -7,7 +7,11 @@ var Author = React.createClass({
       author: "awm" 
     };
   },
+  shouldComponentUpdate: function(nextProps, nextState) {
+    return this.props.linkList !== nextProps.linkList;
+  },
   render: function() {
+    console.log("Render Author");
     return (
       <div className="author-block">
         <div className="author-name">

@@ -1881,8 +1881,9 @@ h6 {
 .nav-block-background {
   position: absolute;
   top: 70px;
-  width: 35%;
-  z-index: -1;
+  width: 0;
+  overflow: hidden;
+  transition-delay: 1s;
 }
 .nav-block-background .nav-list {
   width: 100%;
@@ -1985,21 +1986,6 @@ h6 {
   border-radius: 25px;
   background: #e5e5e5;
 }
-.article-button:hover .article-button-border {
-  top: 3px;
-  left: 3px;
-  width: 44px;
-  height: 44px;
-  border: 3px solid #e5e5e5;
-}
-.article-button:hover .article-button-background {
-  opacity: 0;
-}
-.article-button:hover .article-button-letter {
-  color: #dd0000;
-  border: 1px solid #cccccc;
-  line-height: 44px;
-}
 .article-button > a {
   position: relative;
   float: left;
@@ -2012,11 +1998,13 @@ h6 {
   position: absolute;
   top: 25px;
   left: 25px;
-  width: 0px;
-  height: 0px;
-  border: 0px solid rgba(229, 229, 229, 0);
+  width: 44px;
+  height: 44px;
+  border: 3px solid #e5e5e5;
   border-radius: 25px;
-  transition: top 1s, left 1s, width 1s, height 1s, border 0.5s;
+  -webkit-transform: scale(0%, 0%);
+          transform: scale(0%, 0%);
+  transition: all 1s;
 }
 .article-button-background,
 .article-button-letter {
@@ -2053,18 +2041,9 @@ h6 {
   background: #f2f2f2;
   overflow: auto;
 }
-.article-container:hover .article-banner-image {
-  opacity: 1;
-}
-.article-container.article-active .article-banner-image {
-  opacity: 1;
-}
 .article-container.article-active .article-button-border {
-  top: 3px;
-  left: 3px;
-  width: 44px;
-  height: 44px;
-  border: 3px solid #e5e5e5;
+  -webkit-transform: translate(-22px, -22px) scale(1, 1);
+          transform: translate(-22px, -22px) scale(1, 1);
 }
 .article-container.article-active .article-button-background {
   opacity: 0;
@@ -2101,8 +2080,6 @@ h6 {
 .article-banner-image {
   width: 100%;
   border: 1px solid #000000;
-  opacity: 0.75;
-  transition: opacity 1s;
 }
 .article-body {
   margin: 1.5% 0;
@@ -2122,9 +2099,11 @@ h6 {
 }
 .header-container {
   position: fixed;
-  width: 100%;
+  top: 5px;
+  left: 90px;
+  right: 90px;
   padding: 10px 0;
-  z-index: 10;
+  z-index: 30;
 }
 .search-container {
   position: relative;
@@ -2156,12 +2135,16 @@ h6 {
   opacity: 0;
 }
 @media (max-width: 768px) {
+  .nav-active .nav-block-background {
+    width: 225px;
+    transition-delay: 0s;
+  }
   .nav-active .nav-name {
     padding: 4rem 4rem 2rem;
   }
   .nav-active .article-block {
-    -webkit-transform: translate(33%, 0);
-            transform: translate(33%, 0);
+    -webkit-transform: translate(225px, 0);
+            transform: translate(225px, 0);
   }
   .article-block {
     transition: -webkit-transform 1s;

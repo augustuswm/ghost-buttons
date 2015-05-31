@@ -38,25 +38,25 @@
   border-radius: 25px;
   background: @lighter-gray;
 
-  &:hover {
-    .article-button-border {
-      top: 3px;
-      left: 3px;
-      width: 44px;
-      height: 44px;
-      border: 3px solid @lighter-gray;
-    }
+  // &:hover {
+  //   .article-button-border {
+  //     top: 3px;
+  //     left: 3px;
+  //     width: 44px;
+  //     height: 44px;
+  //     border: 3px solid @lighter-gray;
+  //   }
 
-    .article-button-background {
-      opacity: 0;
-    }
+  //   .article-button-background {
+  //     opacity: 0;
+  //   }
 
-    .article-button-letter {
-      color: @NES-red;
-      border: 1px solid @light-gray;
-      line-height: 44px;
-    }
-  }
+  //   .article-button-letter {
+  //     color: @NES-red;
+  //     border: 1px solid @light-gray;
+  //     line-height: 44px;
+  //   }
+  // }
 
   & > a {
     position: relative;
@@ -72,11 +72,12 @@
   position: absolute;
   top: 25px;
   left: 25px;
-  width: 0px;
-  height: 0px;
-  border: 0px solid fade(@lighter-gray, 0%);
+  width: 44px;
+  height: 44px;
+  border: 3px solid @lighter-gray;
   border-radius: 25px;
-  transition: top 1s, left 1s, width 1s, height 1s, border 0.5s;
+  transform: scale(0%, 0%);
+  transition: all 1s;
 }
 
 .article-button-background, .article-button-letter {
@@ -124,23 +125,14 @@
   background: @lightest-gray;
   overflow: auto;
 
-  &:hover {
-    .article-banner-image {
-      opacity: 1;
-    }
-  }
-
   &.article-active {
-    .article-banner-image {
-      opacity: 1;
-    }
-
     .article-button-border {
-      top: 3px;
-      left: 3px;
-      width: 44px;
-      height: 44px;
-      border: 3px solid @lighter-gray;
+      transform: translate(-22px, -22px) scale(1, 1);
+      // top: 3px;
+      // left: 3px;
+      // width: 44px;
+      // height: 44px;
+      // border: 3px solid @lighter-gray;
     }
 
     .article-button-background {
@@ -187,8 +179,6 @@
 .article-banner-image {
   width: 100%;
   border: 1px solid @darkest-gray;
-  opacity: 0.75;
-  transition: opacity 1s;
 }
 
 .article-body {

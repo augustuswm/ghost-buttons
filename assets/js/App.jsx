@@ -19,13 +19,13 @@ var linkStore = [
       {label: "Watch", icon: "\uF152", src: "Gallery", callback: function() {}},
       {label: "Play", icon: "\uF1D9", src: "Arcade", callback: function() {}},
       {label: "Recompile BG", icon: "\uF1D9", src: "/", callback: compileHandler}
-    ];
-
-var contactLinkStore = [
+    ],
+    contactLinkStore = [
       {label: "github", src: "https://github.com/augustuswm", icon: "\uF09B", rel: "external", callback: function() {}},
       {label: "gmail", src: "https://gusmayo@gmail.com", icon: "\uF003", rel: "external", callback: function() {}},
       {label: "twitter", src: "https://twitter.com/augustuswm", icon: "\uF099", rel: "external", callback: function() {}}
-    ];
+    ],
+    backgroundLinkStore = linkStore.concat(contactLinkStore);
 
 io.on("recompiled", function(data) {
   if (data && data.css) {
@@ -51,7 +51,7 @@ var App = React.createClass({
       <div className={toggleNavClass}>
         <div className="container">
           <div className="container-main">
-            <BackgroundNav linkList={linkStore.concat(contactLinkStore)} />
+            <BackgroundNav linkList={backgroundLinkStore} />
             <RouteHandler />
             <Nav linkList={linkStore} toggleNav={this.toggleNav} />
             <Author linkList={contactLinkStore} />

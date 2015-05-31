@@ -6,9 +6,13 @@ var Search = React.createClass({
       this.refs.searchBox.getDOMNode().value
     );
   },
+  shouldComponentUpdate: function(nextProps, nextState) {
+    console.log(this.props.disabled, nextProps.disabled);
+    return this.props.disabled !== nextProps.disabled;
+  },
   render: function() {
-    var author = this.props.author || "awm",
-        searchClasses = [
+    console.log("Render Search");
+    var searchClasses = [
           "search-box",
           this.props.searchString ? "has-active-search" : ""
         ].join(" ");
@@ -20,7 +24,6 @@ var Search = React.createClass({
             className={searchClasses}
             ref="searchBox"
             type="text"
-            value={this.props.searchString}
             placeholder={"\uF002"}
             onChange={this.handleSearchChange}
             disabled={this.props.disabled} />
