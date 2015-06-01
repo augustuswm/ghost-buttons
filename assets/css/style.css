@@ -1986,6 +1986,18 @@ h6 {
   border-radius: 25px;
   background: #e5e5e5;
 }
+.article-button:hover .article-button-border {
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
+}
+.article-button:hover .article-button-background {
+  opacity: 0;
+}
+.article-button:hover .article-button-letter {
+  color: #dd0000;
+  border: 1px solid #cccccc;
+  line-height: 44px;
+}
 .article-button > a {
   position: relative;
   float: left;
@@ -1996,15 +2008,16 @@ h6 {
 }
 .article-button-border {
   position: absolute;
-  top: 25px;
-  left: 25px;
+  top: 3px;
+  left: 3px;
   width: 44px;
   height: 44px;
   border: 3px solid #e5e5e5;
   border-radius: 25px;
-  -webkit-transform: scale(0%, 0%);
-          transform: scale(0%, 0%);
-  transition: all 1s;
+  -webkit-transform: scale(0, 0);
+          transform: scale(0, 0);
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
 }
 .article-button-background,
 .article-button-letter {
