@@ -37,17 +37,20 @@ var Magazine = React.createClass({
     });
   },
   shouldComponentUpdate: function(nextProps, nextState) {
-    console.log(this.state.slugList.length, nextState.slugList.length);
-    return this.state.slugList.length !== nextState.slugList.length;
+    return this.state.slugList.length !== nextState.slugList.length ||
+           this.state.searchString !== nextState.searchString;
   },
   render: function() {
     console.log("Render Magazine");
     var active = this.state.slugList.length === 1,
-        articles = this.state.slugList.map(function(articleSlug) {
+        articles = this.state.fullSlugList.map(function(articleSlug) {
+          var isActive = active && this.state.slugList[0] === articleSlug,
+              isInactive = active && !isActive;
+
           return (
-            <Article key={articleSlug} slug={articleSlug} active={active} />
+            <Article key={articleSlug} slug={articleSlug} active={isActive} inactive={isInactive} />
           );
-        });
+        }.bind(this));
 
     return (
       <div className="magazine">

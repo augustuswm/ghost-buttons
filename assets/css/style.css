@@ -1986,18 +1986,6 @@ h6 {
   border-radius: 25px;
   background: #e5e5e5;
 }
-.article-button:hover .article-button-border {
-  -webkit-transform: scale(1, 1);
-          transform: scale(1, 1);
-}
-.article-button:hover .article-button-background {
-  opacity: 0;
-}
-.article-button:hover .article-button-letter {
-  color: #dd0000;
-  border: 1px solid #cccccc;
-  line-height: 44px;
-}
 .article-button > a {
   position: relative;
   float: left;
@@ -2055,8 +2043,8 @@ h6 {
   overflow: auto;
 }
 .article-container.article-active .article-button-border {
-  -webkit-transform: translate(-22px, -22px) scale(1, 1);
-          transform: translate(-22px, -22px) scale(1, 1);
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
 }
 .article-container.article-active .article-button-background {
   opacity: 0;
@@ -2065,6 +2053,10 @@ h6 {
   color: #dd0000;
   border: 1px solid #cccccc;
   line-height: 44px;
+}
+.article-container.article-inactive {
+  display: none;
+  overflow: hidden;
 }
 @media (max-width: 768px) {
   .article-container {

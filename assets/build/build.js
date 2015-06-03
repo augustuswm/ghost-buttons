@@ -34,6 +34,8 @@ io.on("recompiled", function(data) {
   }
 });
 
+React.initializeTouchEvents(true);
+
 var App = React.createClass({displayName: "App",
   getInitialState: function() {
     return {
@@ -49,7 +51,7 @@ var App = React.createClass({displayName: "App",
     var toggleNavClass = this.state.navActive ? "nav-active" : "";
 
     return (
-      React.createElement("div", {className: toggleNavClass}, 
+      React.createElement("div", {id: "app", className: toggleNavClass}, 
         React.createElement("div", {className: "container"}, 
           React.createElement("div", {className: "container-main"}, 
             React.createElement(BackgroundNav, {linkList: backgroundLinkStore}), 
@@ -136,7 +138,8 @@ var Article = React.createClass({displayName: "Article",
     return ArticleStore[this.props.slug] || this.getEmptyState();
   },
   render: function() {
-    var classes = "article-container" + ((this.props.active) ? " article-active" : ""),
+    console.log("Render Article");
+    var classes = "article-container" + ((this.props.active) ? " article-active" : "") + ((this.props.inactive) ? " article-inactive" : ""),
         tags = this.props.active ? React.createElement(TagList, {tags: this.state.meta.tags}) : "",
         body = this.props.active ? React.createElement(ArticleBody, {body: this.state.body}) : "";
 
@@ -412,17 +415,20 @@ var Magazine = React.createClass({displayName: "Magazine",
     });
   },
   shouldComponentUpdate: function(nextProps, nextState) {
-    console.log(this.state.slugList.length, nextState.slugList.length);
-    return this.state.slugList.length !== nextState.slugList.length;
+    return this.state.slugList.length !== nextState.slugList.length ||
+           this.state.searchString !== nextState.searchString;
   },
   render: function() {
     console.log("Render Magazine");
     var active = this.state.slugList.length === 1,
-        articles = this.state.slugList.map(function(articleSlug) {
+        articles = this.state.fullSlugList.map(function(articleSlug) {
+          var isActive = active && this.state.slugList[0] === articleSlug,
+              isInactive = active && !isActive;
+
           return (
-            React.createElement(Article, {key: articleSlug, slug: articleSlug, active: active})
+            React.createElement(Article, {key: articleSlug, slug: articleSlug, active: isActive, inactive: isInactive})
           );
-        });
+        }.bind(this));
 
     return (
       React.createElement("div", {className: "magazine"}, 
@@ -503,7 +509,8 @@ var Search = React.createClass({displayName: "Search",
   },
   shouldComponentUpdate: function(nextProps, nextState) {
     console.log(this.props.disabled, nextProps.disabled);
-    return this.props.disabled !== nextProps.disabled;
+    return this.props.disabled !== nextProps.disabled ||
+           this.props.searchString !== nextProps.searchString;
   },
   render: function() {
     console.log("Render Search");
@@ -519,6 +526,7 @@ var Search = React.createClass({displayName: "Search",
             className: searchClasses, 
             ref: "searchBox", 
             type: "text", 
+            value: this.props.searchString, 
             placeholder: "\uF002", 
             onChange: this.handleSearchChange, 
             disabled: this.props.disabled})

@@ -56,7 +56,8 @@ var Article = React.createClass({
     return ArticleStore[this.props.slug] || this.getEmptyState();
   },
   render: function() {
-    var classes = "article-container" + ((this.props.active) ? " article-active" : ""),
+    console.log("Render Article");
+    var classes = "article-container" + ((this.props.active) ? " article-active" : "") + ((this.props.inactive) ? " article-inactive" : ""),
         tags = this.props.active ? <TagList tags={this.state.meta.tags} /> : "",
         body = this.props.active ? <ArticleBody body={this.state.body} /> : "";
 

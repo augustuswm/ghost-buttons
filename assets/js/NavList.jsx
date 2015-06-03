@@ -6,7 +6,7 @@ var NavList = React.createClass({
   render: function() {
     var navLinks = this.props.linkList.map(function(link) {
       return (
-        <Link to={link.src} rel={link.rel} className="nav-item" key={link.label} onClick={link.callback} >
+        <Link to={link.src} rel={link.rel} className="nav-item" key={link.label} onClick={link.callback}>
           <li>
             <span className="nav-icon">{link.icon}</span>{link.label}
           </li>

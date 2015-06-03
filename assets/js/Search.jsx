@@ -8,7 +8,8 @@ var Search = React.createClass({
   },
   shouldComponentUpdate: function(nextProps, nextState) {
     console.log(this.props.disabled, nextProps.disabled);
-    return this.props.disabled !== nextProps.disabled;
+    return this.props.disabled !== nextProps.disabled ||
+           this.props.searchString !== nextProps.searchString;
   },
   render: function() {
     console.log("Render Search");
@@ -24,6 +25,7 @@ var Search = React.createClass({
             className={searchClasses}
             ref="searchBox"
             type="text"
+            value={this.props.searchString}
             placeholder={"\uF002"}
             onChange={this.handleSearchChange}
             disabled={this.props.disabled} />
