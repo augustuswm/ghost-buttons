@@ -1,13 +1,21 @@
-var React = require('react');
+var React = require('react'),
+    _ = require('lodash');
 
 var Search = React.createClass({
-  handleSearchChange: function() {
-    this.props.onSearchUpdate(
-      this.refs.searchBox.getDOMNode().value
+  onSearchChange: function() {
+    this.handleSearchChange();
+  },
+  componentWillMount: function() {
+    this.handleSearchChange = _.debounce(
+      function() {
+        this.props.onSearchUpdate(
+          this.refs.searchBox.getDOMNode().value
+        );
+      }.bind(this),
+      350
     );
   },
   shouldComponentUpdate: function(nextProps, nextState) {
-    console.log(this.props.disabled, nextProps.disabled);
     return this.props.disabled !== nextProps.disabled ||
            this.props.searchString !== nextProps.searchString;
   },
@@ -25,9 +33,9 @@ var Search = React.createClass({
             className={searchClasses}
             ref="searchBox"
             type="text"
-            value={this.props.searchString}
+            // value={this.props.searchString}
             placeholder={"\uF002"}
-            onChange={this.handleSearchChange}
+            onChange={this.onSearchChange}
             disabled={this.props.disabled} />
         </div>
       </div>

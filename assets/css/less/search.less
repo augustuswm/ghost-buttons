@@ -31,14 +31,27 @@
   opacity: 1;
   transition: max-width 0.5s, background-color 1s, opacity 1s;
 
-  &:focus, &.has-active-search {
+  &:disabled {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 769px) {
+  .search-box {
+    &:focus, &.has-active-search {
+      max-width: 300px;
+      background: @lightest-gray;
+      color: @dark-gray;
+      outline: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .search-box {
     max-width: 300px;
     background: @lightest-gray;
     color: @dark-gray;
     outline: 0;
-  }
-
-  &:disabled {
-    opacity: 0;
   }
 }

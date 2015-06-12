@@ -33,7 +33,7 @@ io.on("recompiled", function(data) {
   }
 });
 
-React.initializeTouchEvents(true);
+// React.initializeTouchEvents(true);
 
 var App = React.createClass({
   getInitialState: function() {
@@ -48,6 +48,7 @@ var App = React.createClass({
   },
   render: function() {
     var toggleNavClass = this.state.navActive ? "nav-active" : "";
+    console.log("Render App");
 
     return (
       <div id="app" className={toggleNavClass}>
