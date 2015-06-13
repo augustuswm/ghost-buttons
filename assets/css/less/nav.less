@@ -1,7 +1,12 @@
 .nav-name {
   float: left;
   padding: 4rem 4rem 3rem;
-  background: @darker-gray;
+  background: @dark-gray;
+  transform: rotate(-45deg) translateX(-3rem) translateY(-3rem);
+}
+
+.nav-name-right {
+  display: none;
 }
 
 .nav-A {
@@ -22,16 +27,12 @@
   position: absolute;
   top: 0;
   left: 0;
-  margin: 0 @element-padding / 2;
+  // margin: 0 @element-padding / 2;
   padding: 0 0 15px;
   z-index: 20;
 
   @media (min-width: 769px) {
     &:hover {
-      .nav-name {
-        padding: 4rem 4rem 2rem;
-      }
-
       .nav-A {
         background: @lightest-gray;
         color: @lightest-gray;
@@ -46,13 +47,6 @@
         display: block;
       }
     }
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-block {
-    margin-left: 0;
-    padding: 0 0 15px;
   }
 }
 
@@ -71,11 +65,11 @@
 
 .nav-list {
   margin: 0;
-  padding: 15px 15px 0;
+  padding: 15px 15px;
   list-style: none;
-  background: @darker-gray;
+  background: @dark-gray;
   display: none;
-  clear: left;
+  // clear: left;
 }
 
 .nav-item {
@@ -93,4 +87,21 @@
 .nav-icon {
   width: 35px;
   display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .nav-name {
+    transform: rotate(-45deg) translateX(-2rem) translateY(-2rem);
+  }
+
+  .nav-block {
+    margin-left: 0;
+    padding: 0 0 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav-list {
+    margin-top: 7rem;
+  }
 }

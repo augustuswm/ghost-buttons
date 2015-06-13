@@ -58,7 +58,7 @@ var App = React.createClass({displayName: "App",
             React.createElement(BackgroundNav, {linkList: backgroundLinkStore}), 
             React.createElement(RouteHandler, null), 
             React.createElement(Nav, {linkList: linkStore, toggleNav: this.toggleNav}), 
-            React.createElement(Author, {linkList: contactLinkStore})
+            React.createElement("div", {className: "nav-name-right"}, React.createElement("span", null))
           )
         )
       )

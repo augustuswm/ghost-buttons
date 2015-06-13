@@ -57,7 +57,7 @@ var App = React.createClass({
             <BackgroundNav linkList={backgroundLinkStore} />
             <RouteHandler />
             <Nav linkList={linkStore} toggleNav={this.toggleNav} />
-            <Author linkList={contactLinkStore} />
+            <div className="nav-name-right"><span></span></div>
           </div>
         </div>
       </div>
