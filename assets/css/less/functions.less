@@ -3,4 +3,31 @@
     @random-color: e(`Math.floor(Math.random()*(@{max}-@{min})) + @{min}`);
     return: @random-color;
   }
+
+  .pixel(@x, @y, @size, @color, @canvasSize) {
+  	@offset: @size * 2;
+
+  	@pixelGradient: linear-gradient(45deg,
+      @color @size*(100/@canvasSize)*1%,
+      transparent @size*(100/@canvasSize)*1%
+    ) @y*@offset*1px @x*@offset*1px,
+    linear-gradient(45deg,
+      transparent (100 - @size*(100/@canvasSize))*1%,
+      @color (100 - @size*(100/@canvasSize))*1%
+    ) (@y + 1)*@offset*1px  (@x - 1)*@offset*1px;
+
+    return: @pixelGradient;
+  }
 }
+
+// 40 => 100, 20
+
+// 30 => 100, 15
+
+// 24 => 100, 12
+
+// 20 => 100, 10 
+
+// 16 => 100, 8
+
+// 5 => 100, 5

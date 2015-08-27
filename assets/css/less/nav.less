@@ -1,8 +1,11 @@
 .nav-name {
-  float: left;
+  position: absolute;
+  top: 4px;
+  left: -42px;
   padding: 4rem 4rem 3rem;
   background: @dark-gray;
-  transform: rotate(-45deg) translateX(-3rem) translateY(-3rem);
+  transform: rotate(-45deg);
+  z-index: 5;
 }
 
 .nav-name-right {
@@ -24,7 +27,7 @@
 }
 
 .nav-block {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   // margin: 0 @element-padding / 2;
@@ -43,15 +46,15 @@
           -2.5rem 1.25rem, 0 1.25rem, 2.5rem 1.25rem;
       }
 
-      .nav-list {
-        display: block;
-      }
+      // .nav-list {
+      //   display: block;
+      // }
     }
   }
 }
 
 .nav-block-background {
-  position: absolute;
+  position: fixed;
   top: 70px;
   width: 0;
   overflow: hidden;
@@ -69,31 +72,37 @@
   list-style: none;
   background: @dark-gray;
   display: none;
-  // clear: left;
 }
 
 .nav-item {
-  margin: 0 -15px;
-  padding: 5px 15px;
   font-family: "Hind", "FontAwesome", sans-serif;
   text-align: left;
   display: block;
 
-  &.active {
+  &.active > .nav-item-container {
     background-color: @lightest-gray;
   }
 }
 
+.nav-item-container {
+  position: relative;
+  height: 2em;
+  margin: 0 -15px;
+  padding: 5px 15px; 
+}
+
+.nav-item-content {
+  position: absolute;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+}
+
 .nav-icon {
-  width: 35px;
+  min-width: 25px;
   display: inline-block;
 }
 
 @media (max-width: 768px) {
-  .nav-name {
-    transform: rotate(-45deg) translateX(-2rem) translateY(-2rem);
-  }
-
   .nav-block {
     margin-left: 0;
     padding: 0 0 15px;
@@ -101,7 +110,56 @@
 }
 
 @media (min-width: 768px) {
+  .nav-block-background {
+    display: none;
+  }
+
+  .nav-active {
+    .nav-list {
+      visibility: visible;
+      opacity: 0.9;
+      transition: visibility 0s, opacity 0.5s;
+    }
+  }
+
   .nav-list {
-    margin-top: 7rem;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    padding-top: 7rem;
+    background: #700;
+    opacity: 0;
+    visibility: hidden;
+    display: block;
+    transition: visibility 0.5s, opacity 0.5s;
+    will-change: opacity;
+  }
+
+  .nav-item {
+    font-size: 1.5em;
+  }
+
+  .nav-item > .nav-item-container::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: @lightest-gray;
+    transform: translateX(-102%);
+    transition: transform 1s;
+    content: "";
+    z-index: -1;
+    will-change: transform;
+  }
+
+  .nav-item:hover > .nav-item-container::after {
+    transform: translateX(0);
+  }
+
+  .nav-icon {
+    min-width: 50px;
   }
 }

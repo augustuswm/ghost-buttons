@@ -18,14 +18,11 @@ var linkStore = [
       {label: "Read", icon: "\uF1EA", src: "Magazine", callback: function() {}},
       {label: "Watch", icon: "\uF152", src: "Gallery", callback: function() {}},
       {label: "Play", icon: "\uF1D9", src: "Arcade", callback: function() {}},
-      {label: "Recompile BG", icon: "\uF1D9", src: "/", callback: compileHandler}
-    ],
-    contactLinkStore = [
+      {label: "Recompile BG", icon: "\uF009", src: "/", callback: compileHandler},
       {label: "github", src: "https://github.com/augustuswm", icon: "\uF09B", rel: "external", callback: function() {}},
       {label: "gmail", src: "https://gusmayo@gmail.com", icon: "\uF003", rel: "external", callback: function() {}},
       {label: "twitter", src: "https://twitter.com/augustuswm", icon: "\uF099", rel: "external", callback: function() {}}
-    ],
-    backgroundLinkStore = linkStore.concat(contactLinkStore);
+    ];
 
 io.on("recompiled", function(data) {
   if (data && data.css) {
@@ -54,10 +51,12 @@ var App = React.createClass({
       <div id="app" className={toggleNavClass}>
         <div className="container">
           <div className="container-main">
-            <BackgroundNav linkList={backgroundLinkStore} />
+            <BackgroundNav linkList={linkStore} />
             <RouteHandler />
             <Nav linkList={linkStore} toggleNav={this.toggleNav} />
-            <div className="nav-name-right"><span></span></div>
+            <div className="nav-name-right">
+              <span className="nav-A-mock"></span>
+            </div>
           </div>
         </div>
       </div>

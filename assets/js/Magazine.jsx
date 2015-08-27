@@ -1,10 +1,9 @@
 var React = require('react'),
-    Immutable = require('Immutable'),
     Article = require('./Article.jsx'),
     Search = require('./Search.jsx');
 
 var ArticleSlugStore = [
-  "post-one",
+  "it-finally-works",
   "post-two"
 ];
 

@@ -1,6 +1,10 @@
 @import "colors";
 
 @media (max-width: 768px) {
+  .nav-block-background {
+    position: absolute;
+  }
+
   .nav-active {
     .nav-block-background {
       width: 225px;
@@ -17,12 +21,18 @@
   }
 
   .nav-name-right {
-    position: absolute;
-    top: 0;
-    right: 0;
+    position: fixed;
+    top: 4px;
+    right: -42px;
     padding: 4rem 4rem 3rem;
     background: @dark-gray;
     display: block;
-    transform: rotate(-45deg) translateX(2rem) translateY(2rem);
+    transform: rotate(45deg);
+  }
+
+  .nav-A-mock {
+    width: 1rem;
+    height: 1rem;
+    display: block;
   }
 }
